@@ -8,11 +8,11 @@ Imported.YEP_PartySystem = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Party = Yanfly.Party || {};
-Yanfly.Party.version = 1.12;
+Yanfly.Party.version = 1.13;
 
 //=============================================================================
  /*:
- * @plugindesc v1.12 Replaces the default 'Formation' command with a new
+ * @plugindesc v1.13 Replaces the default 'Formation' command with a new
  * menu for players to easily change party formations.
  * @author Yanfly Engine Plugins
  *
@@ -20,30 +20,51 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Max Battle Members
+ * @parent ---General---
+ * @type number
+ * @min 1
  * @desc Maximum amount of actors that can participate in battle.
  * Default: 4
  * @default 4
  *
  * @param Show Battle Command
+ * @parent ---General---
+ * @type boolean
+ * @on Show
+ * @off Hide
  * @desc Show the 'Formation' command in the Party Command Window?
  * NO - false     YES - true
  * @default true
  *
  * @param Enable Battle Command
+ * @parent ---General---
+ * @type boolean
+ * @on Enable
+ * @off Disable
  * @desc Enable the 'Formation' command in the Party Command Window?
  * NO - false     YES - true
  * @default true
  *
  * @param Battle Cooldown
+ * @parent ---General---
+ * @type number
+ * @min 0
  * @desc How many turns must the player wait after changing party?
  * @default 1
  *
  * @param Maximum Followers
+ * @parent ---General---
+ * @type number
+ * @min 0
  * @desc Maximum number of followers on the map.
  * Default: 4
  * @default 4
  *
  * @param EXP Distribution
+ * @parent ---General---
+ * @type boolean
+ * @on Distribute EXP
+ * @off Full EXP
  * @desc Divide battle EXP gained across live members?
  * NO - false     YES - true
  * @default false
@@ -52,31 +73,44 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Help Window
+ * @parent ---Menu---
+ * @type boolean
+ * @on Show
+ * @off Hide
  * @desc Show the Help Window in the party menu?
  * NO - false     YES - true
  * @default false
  *
  * @param Text Alignment
+ * @parent ---Menu---
+ * @type combo
+ * @option left
+ * @option center
+ * @option right
  * @desc The text alignment for the command window.
  * left     center     right
  * @default center
  *
  * @param Change Command
+ * @parent ---Menu---
  * @desc How the 'Change' command appears in the command menu.
  * Leave this blank to remove it.
  * @default Change
  *
  * @param Remove Command
+ * @parent ---Menu---
  * @desc How the 'Remove' command appears in the command menu.
  * Leave this blank to remove it.
  * @default Remove
  *
  * @param Revert Command
+ * @parent ---Menu---
  * @desc How the 'Revert' command appears in the command menu.
  * Leave this blank to remove it.
  * @default Revert
  *
  * @param Finish Command
+ * @parent ---Menu---
  * @desc How the 'Finish' command appears in the command menu.
  * Leave this blank to remove it.
  * @default Finish
@@ -85,15 +119,24 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Empty Text
+ * @parent ---Selection---
  * @desc What text to display in an empty party slot.
  * @default - Empty -
  *
  * @param Actor Face
+ * @parent ---Selection---
+ * @type boolean
+ * @on Show Face
+ * @off No Face
  * @desc Show the actor's face?
  * NO - false     YES - true
  * @default true
  *
  * @param Actor Sprite
+ * @parent ---Selection---
+ * @type boolean
+ * @on Show Sprite
+ * @off No Sprite
  * @desc Show the actor's sprite?
  * NO - false     YES - true
  * @default true
@@ -102,20 +145,33 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Remove Icon
+ * @parent ---List---
+ * @type number
+ * @min 0
  * @desc The icon used to display next to the "Remove" command in the
  * party member list.
  * @default 16
  *
  * @param Show Sprite
+ * @parent ---List---
+ * @type boolean
+ * @on Show Sprite
+ * @off No Sprite
  * @desc Show the actor sprite on the list?
  * YES - true     NO - false
  * @default true
  *
  * @param Sprite Y Buffer
+ * @parent ---List---
+ * @type number
  * @desc This is the amount to adjust the actor graphic by.
  * @default 16
  *
  * @param In Party Text Color
+ * @parent ---List---
+ * @type number
+ * @min 0
+ * @max 31
  * @desc This is the text color to be used if the actor is currently
  * in the party.
  * @default 6
@@ -124,15 +180,25 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Lock First Actor
+ * @parent ---Locking---
+ * @type boolean
+ * @on Lock First Actor
+ * @off No Change
  * @desc Allows you to lock the first actor in the game by default.
  * OFF - false     ON - true
  * @default false
  *
  * @param Locked Icon
+ * @parent ---Locking---
+ * @type number
+ * @min 0
  * @desc This sets what icon to be used when an actor is locked.
  * @default 195
  *
  * @param Required Icon
+ * @parent ---Locking---
+ * @type number
+ * @min 0
  * @desc This sets what icon to be used when an actor is required.
  * @default 205
  *
@@ -140,21 +206,30 @@ Yanfly.Party.version = 1.12;
  * @default
  *
  * @param Enable Detail Window
+ * @parent ---Detail Window---
+ * @type boolean
+ * @on Enable
+ * @off Disable
  * @desc Make use of the detailed party window next to the list.
  * NO - false     YES - true
  * @default true
  *
  * @param List Width
+ * @parent ---Detail Window---
+ * @type number
+ * @min 1
  * @desc If detail window is enabled, what is the width of the
  * party list window?
  * @default 300
  *
  * @param Actor Parameters
+ * @parent ---Detail Window---
  * @desc If there is enough room, this is the text shown to list
  * the actor's parameters.
  * @default Parameters
  *
  * @param Actor Equipment
+ * @parent ---Detail Window---
  * @desc If there is enough room, this is the text shown to list
  * the actor's equipment.
  * @default Equipment
@@ -215,6 +290,9 @@ Yanfly.Party.version = 1.12;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.13:
+ * - Updated for RPG Maker MV version 1.5.0.
  *
  * Version 1.12:
  * - Functions updated to maintain compatibility.

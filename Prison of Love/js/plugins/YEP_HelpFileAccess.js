@@ -20,11 +20,16 @@ Yanfly.Help.version = 1.00;
  * @default
  *
  * @param Help File Path
+ * @parent ---General---
  * @desc Path to the help file. Use a local path to an HTML file or
  * a URL for an online website.
  * @default /help/index.htm
  *
  * @param Enable F1 Key
+ * @parent ---General---
+ * @type boolean
+ * @on Enable
+ * @off Disable
  * @desc Enable the F1 key to open the help file?
  * ON - true     OFF - false
  * @default true
@@ -33,20 +38,33 @@ Yanfly.Help.version = 1.00;
  * @default
  *
  * @param Help Command
+ * @parent ---Menu---
  * @desc This is the text used for the menu command.
  * @default Help
  *
  * @param Auto Add Menu
+ * @parent ---Menu---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Automatically add the 'Help' command to the main menu?
  * NO - false     YES - true
  * @default true
  *
  * @param Show Command
+ * @parent ---Menu---
+ * @type boolean
+ * @on Show
+ * @off Hide
  * @desc Show the Help command in the main menu by default?
  * NO - false     YES - true
  * @default true
  *
  * @param Auto Place Command
+ * @parent ---Menu---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Allow this plugin to decide the menu placement position?
  * NO - false     YES - true
  * @default true

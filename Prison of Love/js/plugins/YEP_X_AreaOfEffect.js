@@ -8,11 +8,11 @@ Imported.YEP_X_AreaOfEffect = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.AOE = Yanfly.AOE || {};
-Yanfly.AOE.version = 1.01
+Yanfly.AOE.version = 1.02
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 (Requires YEP_BattleEngineCore & YEP_TargetCore)
+ * @plugindesc v1.02 (Requires YEP_BattleEngineCore & YEP_TargetCore)
  * Adds Area of Effect scopes for targeting allies or enemies.
  * @author Yanfly Engine Plugins
  *
@@ -20,14 +20,20 @@ Yanfly.AOE.version = 1.01
  * @default
  *
  * @param Buffer X
+ * @parent ---Buffer---
  * @desc The default offset coordinate buffer for battlers.
  * @default 0
  *
  * @param Buffer Y
+ * @parent ---Buffer---
  * @desc The default offset coordinate buffer for battlers.
  * @default 0
  *
  * @param Center Animation
+ * @parent ---Buffer---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Plays battle animation only on central target?
  * NO - false     YES - true
  * @default true
@@ -36,16 +42,34 @@ Yanfly.AOE.version = 1.01
  * @default
  *
  * @param Circle Graphic
+ * @parent ---Circle---
+ * @type file
+ * @dir img/pictures/
+ * @require 1
  * @desc Default graphic used for AoE Circles.
  * Place this image inside img/pictures/
  * @default AoE_Circle
  *
  * @param Circle Blend
+ * @parent ---Circle---
+ * @type select
+ * @option Normal
+ * @value 0
+ * @option Additive
+ * @value 1
+ * @option Multiply
+ * @value 2
+ * @option Screen
+ * @value 3
  * @desc Blend mode used for AoE Circles.
  * 0: Normal, 1: Additive, 2: Multiply, 3: Screen
  * @default 3
  *
  * @param Circle Height Rate
+ * @parent ---Circle---
+ * @type number
+ * @decimals 2
+ * @min 0
  * @desc Default height rate of AoE Circle.
  * @default 0.33
  *
@@ -53,11 +77,25 @@ Yanfly.AOE.version = 1.01
  * @default
  *
  * @param Rect Graphic
+ * @parent ---Rectangle---
+ * @type file
+ * @dir img/pictures/
+ * @require 1
  * @desc Default graphic used for AoE Rectangles.
  * Place this image inside img/pictures/
  * @default AoE_Rect
  *
  * @param Rect Blend
+ * @parent ---Rectangle---
+ * @type select
+ * @option Normal
+ * @value 0
+ * @option Additive
+ * @value 1
+ * @option Multiply
+ * @value 2
+ * @option Screen
+ * @value 3
  * @desc Blend mode used for AoE Rectangles.
  * 0: Normal, 1: Additive, 2: Multiply, 3: Screen
  * @default 3
@@ -192,6 +230,9 @@ Yanfly.AOE.version = 1.01
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Updated for RPG Maker MV version 1.5.0.
  *
  * Version 1.01:
  * - Plugin update to provide checks against certain selection condition types

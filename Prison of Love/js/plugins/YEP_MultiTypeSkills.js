@@ -8,11 +8,11 @@ Imported.YEP_MultiTypeSkills = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.MTS = Yanfly.MTS || {};
-Yanfly.MTS.version = 1.00;
+Yanfly.MTS.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Allow skills to have multiple types to make them 
+ * @plugindesc v1.01 Allow skills to have multiple types to make them 
  * appear in different skill type schools instead of just one.
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -45,6 +45,16 @@ Yanfly.MTS.version = 1.00;
  *   <Skill Types: x to y>
  *   - Gives multiple skill types of x (or to y) for the modified skill. This
  *   will automatically include the skill's type placed by the editor.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

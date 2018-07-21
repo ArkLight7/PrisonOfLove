@@ -8,11 +8,11 @@ Imported.YEP_OverkillBonus = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.OKB = Yanfly.OKB || {};
-Yanfly.OKB.version = 1.00;
+Yanfly.OKB.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Extra rewards (EXP, Gold, Items) for overkilling
+ * @plugindesc v1.01 Extra rewards (EXP, Gold, Items) for overkilling
  * enemies in battle.
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -22,31 +22,45 @@ Yanfly.OKB.version = 1.00;
  * @default 0.5 * enemy.mhp
  *
  * @param Overkill Animation
+ * @type animation
  * @desc This animation will play on the enemy if the enemy is overkilled.
  * Leave this at 0 if you do not want to play any animations.
  * @default 13
  *
  * @param EXP Bonus Rate
+ * @type number
+ * @decimals 2
+ * @min 0
  * @desc This is the bonus EXP modified when an enemy is ovekilled.
  * This is a rate. 0 is 0%. 1.00 is 100%. 0.50 is 50%.
  * @default 2.00
  *
  * @param EXP Bonus Flat
+ * @type number
+ * @min 0
  * @desc This is the bonus EXP given out when an enemy is ovekilled.
  * This is a flat amount.
  * @default 0
  *
  * @param Gold Bonus Rate
+ * @type number
+ * @decimals 2
+ * @min 0
  * @desc This is the bonus Gold modified when an enemy is ovekilled.
  * This is a rate. 0 is 0%. 1.00 is 100%. 0.50 is 50%.
  * @default 2.00
  *
  * @param Gold Bonus Flat
+ * @type number
+ * @min 0
  * @desc This is the bonus Gold given out when an enemy is ovekilled.
  * This is a flat amount.
  * @default 0
  *
  * @param Drop Bonus Rate
+ * @type number
+ * @decimals 2
+ * @min 0
  * @desc This is the bonus drop modified when an enemy is ovekilled.
  * This is a rate. 0 is 0%. 1.00 is 100%. 0.50 is 50%.
  * @default 2.00
@@ -170,8 +184,15 @@ Yanfly.OKB.version = 1.00;
  * Changelog
  * ============================================================================
  *
- * Version BETA:
- * - Started Plugin!
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

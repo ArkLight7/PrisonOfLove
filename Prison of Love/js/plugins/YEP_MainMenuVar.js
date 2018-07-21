@@ -8,11 +8,11 @@ Imported.YEP_MainMenuVar = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.MMVar = Yanfly.MMVar || {};
-Yanfly.MMVar.version = 1.00;
+Yanfly.MMVar.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Adds a new variable window to your main menu.
+ * @plugindesc v1.01 Adds a new variable window to your main menu.
  * You can use it to display up to 10 different variables!
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -288,6 +288,16 @@ Yanfly.MMVar.version = 1.00;
  *
  * This is a collaboration plugin by Tigress and Yanfly to ensure compatibility
  * with the Yanfly Engine Plugins library.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

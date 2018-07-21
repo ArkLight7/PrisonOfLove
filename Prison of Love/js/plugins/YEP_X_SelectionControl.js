@@ -8,11 +8,11 @@ Imported.YEP_X_SelectionControl = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Sel = Yanfly.Sel || {};
-Yanfly.Sel.version = 1.11;
+Yanfly.Sel.version = 1.13;
 
 //=============================================================================
  /*:
- * @plugindesc v1.11 (Requires YEP_BattleEngineCore & YEP_TargetCore.js)
+ * @plugindesc v1.13 (Requires YEP_BattleEngineCore & YEP_TargetCore.js)
  * Control what targets can and can't be selected for actions.
  * @author Yanfly Engine Plugins
  *
@@ -20,31 +20,55 @@ Yanfly.Sel.version = 1.11;
  * @default
  *
  * @param Single Multiple
+ * @parent ---Default---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Single target magical skills to be able to select all units
  * of a battler group. NO - false     YES - true
  * @default true
  *
  * @param Disperse Damage
+ * @parent ---Default---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Automatically disperse damage if multiple targets are
  * selected instead of single targets? NO - false     YES - true
  * @default true
  *
  * @param Actor or Enemy
+ * @parent ---Default---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Single target skills can target either actors or enemies
  * by default? NO - false     YES - true
  * @default true
  *
  * @param Physical Front Row
+ * @parent ---Default---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Req. YEP_RowFormation, set physical single-target skills
  * to target only the front row? NO - false     YES - true
  * @default false
  *
  * @param Physical Weapon Range
+ * @parent ---Default---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Req. YEP_RowFormation & if the above is false, set physical
  * single-target skills to be weapon ranged? true/false
  * @default true
  *
  * @param Default Weapon Range
+ * @parent ---Default---
+ * @type boolean
+ * @on Ranged
+ * @off Melee
  * @desc Req. YEP_RowFormation, the default range for weapons.
  * MELEE - false     RANGED - true
  * @default false
@@ -53,10 +77,12 @@ Yanfly.Sel.version = 1.11;
  * @default
  *
  * @param All Enemies
+ * @parent ---Text Display---
  * @desc Selection text for all enemies.
  * @default All Enemies
  *
  * @param All Allies
+ * @parent ---Text Display---
  * @desc Selection text for all allies.
  * @default All Allies
  *
@@ -64,46 +90,58 @@ Yanfly.Sel.version = 1.11;
  * @default
  *
  * @param Enable Visual All
+ * @parent ---Visual All Window Select---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Enables a window the player can click to toggle between
  * select all for allies/enemies. YES - true   NO - false
  * @default true
  *
  * @param Visual Enemy X
+ * @parent ---Visual All Window Select---
  * @desc X coordinate of the All Enemies window.
  * This is a formula.
  * @default 0
  *
  * @param Visual Enemy Y
+ * @parent ---Visual All Window Select---
  * @desc Y coordinate of the All Enemies window.
  * This is a formula.
  * @default this.fittingHeight(2)
  *
  * @param Visual Enemy Width
+ * @parent ---Visual All Window Select---
  * @desc Width of the All Enemies window.
  * This is a formula.
  * @default 240
  *
  * @param Visual Enemy Height
+ * @parent ---Visual All Window Select---
  * @desc Width of the All Enemies window.
  * This is a formula.
  * @default this.fittingHeight(1)
  *
   * @param Visual Ally X
+ * @parent ---Visual All Window Select---
  * @desc X coordinate of the All Allies window.
  * This is a formula.
  * @default Graphics.boxWidth - 240
  *
  * @param Visual Ally Y
+ * @parent ---Visual All Window Select---
  * @desc Y coordinate of the All Allies window.
  * This is a formula.
  * @default this.fittingHeight(2)
  *
  * @param Visual Ally Width
+ * @parent ---Visual All Window Select---
  * @desc Width of the All Allies window.
  * This is a formula.
  * @default 240
  *
  * @param Visual Ally Height
+ * @parent ---Visual All Window Select---
  * @desc Width of the All Allies window.
  * This is a formula.
  * @default this.fittingHeight(1)
@@ -381,6 +419,12 @@ Yanfly.Sel.version = 1.11;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.13:
+ * - Fixed a bug for the cached items.
+ *
+ * Version 1.12:
+ * - Updated for RPG Maker MV version 1.5.0.
  *
  * Version 1.11:
  * - Optimization update. Lag that occurred during menu scrolling in the middle
@@ -711,7 +755,7 @@ Game_Temp.prototype.clearSelectionControlCache = function() {
 };
 
 Game_Temp.prototype.isSelectionControlCached = function(item) {
-  var id = item;
+  var id = item.id;
   if (DataManager.isItem) {
     if (this._selectionControlItemCache === undefined) return false;
     return this._selectionControlItemCache[id] !== undefined;
@@ -722,7 +766,7 @@ Game_Temp.prototype.isSelectionControlCached = function(item) {
 };
 
 Game_Temp.prototype.getSelectionControlCache = function(item) {
-  var id = item;
+  var id = item.id;
   if (DataManager.isItem) {
     this._selectionControlItemCache = this._selectionControlItemCache || {};
     return this._selectionControlItemCache[id];
@@ -733,7 +777,7 @@ Game_Temp.prototype.getSelectionControlCache = function(item) {
 };
 
 Game_Temp.prototype.setSelectionControlCache = function(item, value) {
-  var id = item;
+  var id = item.id;
   if (DataManager.isItem) {
     this._selectionControlItemCache = this._selectionControlItemCache || {};
     this._selectionControlItemCache[id] = value;

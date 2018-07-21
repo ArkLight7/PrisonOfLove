@@ -8,11 +8,11 @@ Imported.YEP_HitDamageSounds = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.HDS = Yanfly.HDS || {};
-Yanfly.HDS.version = 1.00;
+Yanfly.HDS.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Play specific damage sounds based on the target's
+ * @plugindesc v1.01 Play specific damage sounds based on the target's
  * armor and/or specific enemy types.
  * @author Yanfly Engine Plugins + Chickie Collaboration
  *
@@ -20,6 +20,10 @@ Yanfly.HDS.version = 1.00;
  * @default
  *
  * @param Only Sound
+ * @parent ---Settings---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Play only the armor sound? If false, will play the default
  * hit sound, too. YES - true     NO - false
  * @default false
@@ -28,501 +32,601 @@ Yanfly.HDS.version = 1.00;
  * @default
  *
  * @param Armor Type 1
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default Blow1, 90, 100, 0
  *
  * @param Armor Type 2
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default Blow2, 90, 100, 0
  *
  * @param Armor Type 3
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default Blow3, 90, 100, 0
  *
  * @param Armor Type 4
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default Hammer, 90, 100, 0
  *
  * @param Armor Type 5
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 6
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 7
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 8
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 9
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 10
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 11
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 12
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 13
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 14
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 15
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 16
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 17
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 18
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 19
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 20
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 21
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 22
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 23
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 24
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 25
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 26
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 27
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 28
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 29
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 30
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 31
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 32
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 33
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 34
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 35
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 36
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 37
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 38
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 39
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 40
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 41
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 42
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 43
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 44
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 45
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 46
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 47
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 48
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 49
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 50
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 51
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 52
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 53
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 54
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 55
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 56
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 57
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 58
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 59
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 60
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 61
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 62
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 63
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 64
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 65
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 66
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 67
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 68
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 69
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 70
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 71
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 72
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 73
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 74
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 75
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 76
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 77
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 78
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 79
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 80
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 81
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 82
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 83
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 84
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 85
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 86
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 87
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 88
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 89
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 90
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 91
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 92
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 93
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 94
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 95
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 96
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 97
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 98
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 99
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
  *
  * @param Armor Type 100
+ * @parent ---Armor Types---
  * @desc The sound used for this armor type. Leave empty to not use.
  * Format: filename, volume, pitch, pan
  * @default 
@@ -587,6 +691,16 @@ Yanfly.HDS.version = 1.00;
  *
  *   In the above examples, the armor piece or enemy will play the Fire sound
  *   effects when struck. This will override the default settings.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

@@ -1,0 +1,422 @@
+[
+null,
+{
+	"ID": 1,
+	"Name": "Copper Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 67,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 52,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 1,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 2,
+	"Name": "Tin Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 87,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 86,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 1,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 3,
+	"Name": "Bronze Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 2
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 52,
+			"Amount": 3
+		},
+		{
+			"Type": "item",
+			"ID": 86,
+			"Amount": 1
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 4,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 4,
+	"Name": "Iron Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 66,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 51,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 1,
+	"LevelReq": 7,
+	"Learned": "start"
+},
+{
+	"ID": 5,
+	"Name": "Steel Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 58,
+			"Amount": 4
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 51,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 89,
+			"Amount": 1
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 1,
+	"LevelReq": 10,
+	"Learned": "levelhit"
+},
+{
+	"ID": 6,
+	"Name": "Leather",
+	"IconIndex": 291,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 91,
+			"Amount": 1
+		}],
+	"Discipline": 5,
+	"Category": ["Tanning"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 7,
+	"Name": "Leather",
+	"IconIndex": 210,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 2
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 92,
+			"Amount": 1
+		}],
+	"Discipline": 5,
+	"Category": ["Tanning"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 8,
+	"Name": "Potion",
+	"IconIndex": 176,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 1,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 3
+		},
+		{
+			"Type": "item",
+			"ID": 95,
+			"Amount": 1
+		}],
+	"Discipline": 3,
+	"Category": ["Brewing"],
+	"XP": 9,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 9,
+	"Name": "Cleaning Rag",
+	"IconIndex": 296,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 13,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 85,
+			"Amount": 1
+		}],
+	"Discipline": 6,
+	"Category": ["Items"],
+	"XP": 17,
+	"LevelReq": 1,
+	"Learned": "command"
+},
+{
+	"ID": 10,
+	"Name": "Oak Lumber",
+	"IconIndex": 210,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 96,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 75,
+			"Amount": 3
+		}],
+	"Discipline": 6,
+	"Category": ["Items"],
+	"XP": 29,
+	"LevelReq": 1,
+	"Learned": "command"
+},
+{
+	"ID": 11,
+	"Name": "Bronze Sword",
+	"IconIndex": 97,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 1,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 2,
+	"Category": ["Weapons"],
+	"XP": 22,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 12,
+	"Name": "Bronze Knuckles",
+	"IconIndex": 106,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 11,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 2,
+	"Category": ["Weapons"],
+	"XP": 22,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 13,
+	"Name": "Iron Sword",
+	"IconIndex": 97,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 7,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 66,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 2,
+	"Category": ["Weapons"],
+	"XP": 41,
+	"LevelReq": 4,
+	"Learned": "levelhit"
+},
+{
+	"ID": 14,
+	"Name": "Oak Bow",
+	"IconIndex": 102,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 4,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 96,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 7,
+	"Category": ["Weapons"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "command"
+},
+{
+	"ID": 15,
+	"Name": "Steel Sword",
+	"IconIndex": 97,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 14,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 58,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 2,
+	"Category": ["Weapons"],
+	"XP": 190,
+	"LevelReq": 10,
+	"Learned": "levelhit"
+},
+{
+	"ID": 16,
+	"Name": "Oak Fishing Pole",
+	"IconIndex": 213,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 104,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 96,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 7,
+	"Category": ["Items"],
+	"XP": 20,
+	"LevelReq": 5,
+	"Learned": "levelhit"
+},
+{
+	"ID": 17,
+	"Name": "Bronze Chainmail",
+	"IconIndex": 137,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 5,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 5
+		}],
+	"Discipline": 2,
+	"Category": ["Armors"],
+	"XP": 20,
+	"LevelReq": 5,
+	"Learned": "levelhit"
+}
+]

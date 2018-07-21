@@ -8,11 +8,11 @@ Imported.YEP_ItemSynthesis = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IS = Yanfly.IS || {};
-Yanfly.IS.version = 1.08;
+Yanfly.IS.version = 1.09;
 
 //=============================================================================
  /*:
- * @plugindesc v1.08 Players can now craft their own items in-game
+ * @plugindesc v1.09 Players can now craft their own items in-game
  * through an item synthesis system.
  * @author Yanfly Engine Plugins
  *
@@ -20,20 +20,33 @@ Yanfly.IS.version = 1.08;
  * @default
  *
  * @param Synthesis Command
+ * @parent ---General---
  * @desc This is the text used for going to the item synthesis menu.
  * @default Synthesis
  *
  * @param Show Command
+ * @parent ---General---
+ * @type boolean
+ * @on Show
+ * @off Hide
  * @desc Show the Synthesis command in the main menu by default?
  * NO - false     YES - true
  * @default true
  *
  * @param Enable Command
+ * @parent ---General---
+ * @type boolean
+ * @on Enable
+ * @off Disable
  * @desc Enable the Synthesis command in the main menu by default?
  * NO - false     YES - true
  * @default true
  *
  * @param Auto Place Command
+ * @parent ---General---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Allow this plugin to decide the menu placement position?
  * NO - false     YES - true
  * @default true
@@ -42,22 +55,31 @@ Yanfly.IS.version = 1.08;
  * @default
  *
  * @param Item Command
+ * @parent ---Command Window---
  * @desc The command text used for synthesizing items.
  * @default Craft Item
  *
  * @param Weapon Command
+ * @parent ---Command Window---
  * @desc The command text used for synthesizing weapons.
  * @default Craft Weapon
  *
  * @param Armor Command
+ * @parent ---Command Window---
  * @desc The command text used for synthesizing armors.
  * @default Craft Armor
  *
  * @param Finish Command
+ * @parent ---Command Window---
  * @desc The command text used for exiting the synthesis scene.
  * @default Finish
  *
  * @param Text Alignment
+ * @parent ---Command Window---
+ * @type combo
+ * @option left
+ * @option center
+ * @option right
  * @desc How to align the text for the command window.
  * left     center     right
  * @default center
@@ -66,21 +88,25 @@ Yanfly.IS.version = 1.08;
  * @default
  *
  * @param Collected Recipes
+ * @parent ---Status Window---
  * @desc Text used to represent total recipes collected.
  * Leave this blank if you don't wish to show this.
  * @default Collected Recipes
  *
  * @param Crafted Items
+ * @parent ---Status Window---
  * @desc Text used to represent total items crafted.
  * Leave this blank if you don't wish to show this.
  * @default Crafted Items
  *
  * @param Crafted Weapons
+ * @parent ---Status Window---
  * @desc Text used to represent total weapons crafted.
  * Leave this blank if you don't wish to show this.
  * @default Crafted Weapons
  *
  * @param Crafted Armors
+ * @parent ---Status Window---
  * @desc Text used to represent total armors crafted.
  * Leave this blank if you don't wish to show this.
  * @default Crafted Armors
@@ -89,38 +115,57 @@ Yanfly.IS.version = 1.08;
  * @default
  *
  * @param Equipped Recipes
+ * @parent ---List Window---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Check recipes from equipped items?
  * NO - false     YES - true
  * @default true
  *
  * @param Mask Unknown
+ * @parent ---List Window---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Mask the names of items that haven't been created yet?
  * NO - false     YES - true
  * @default true
  *
  * @param Mask Text
+ * @parent ---List Window---
  * @desc This will be used to mask over each letter for unknown item
  * names that are to be synthesized.
  * @default ?
  *
  * @param Mask Italic
+ * @parent ---List Window---
+ * @type boolean
+ * @on YES
+ * @off NO
  * @desc Causes the name for unknown items to appear in italic.
  * @default true
  *
  * @param Mask Help Text
+ * @parent ---List Window---
  * @desc This is the text that will be displayed in the help window
  * if the item is masked.
  * @default This item has not been synthesized yet.
  *
  * @param Ingredients Text
+ * @parent ---List Window---
  * @desc This is the text used to describe the Ingredients list.
  * @default Ingredients
  *
  * @param Amount Text
+ * @parent ---List Window---
  * @desc This is the text used for the amount to synthesize.
  * @default Quantity
  *
  * @param Quantity Text Size
+ * @parent ---List Window---
+ * @type number
+ * @min 1
  * @desc This is the text size used for the item quantity.
  * Default: 28
  * @default 20
@@ -129,19 +174,30 @@ Yanfly.IS.version = 1.08;
  * @default
  *
  * @param Default SE
+ * @parent ---Sound---
+ * @type file
+ * @dir audio/se/
+ * @require 1
  * @desc This is the default SE played when synthesizing an item.
  * This is case sensitive. Do not include the extension.
  * @default Twine
  *
  * @param Default Volume
+ * @parent ---Sound---
+ * @type number
+ * @min 0
  * @desc This is the default volume when synthesizing an item.
  * @default 100
  *
  * @param Default Pitch
+ * @parent ---Sound---
+ * @type number
  * @desc This is the default pitch when synthesizing an item.
  * @default 100
  *
  * @param Default Pan
+ * @parent ---Sound---
+ * @type number
  * @desc This is the default pan when synthesizing an item.
  * @default 0
  *
@@ -278,6 +334,9 @@ Yanfly.IS.version = 1.08;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.09:
+ * - Updated for RPG Maker MV version 1.5.0.
  *
  * Version 1.08:
  * - Lunatic Mode fail safes added.

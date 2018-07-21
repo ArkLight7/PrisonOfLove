@@ -8,11 +8,11 @@ Imported.YEP_X_MoreStatusPages = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.MSMP = Yanfly.MSMP || {};
-Yanfly.MSMP.version = 1.00;
+Yanfly.MSMP.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 (Requires YEP_StatusMenuCore.js) Add more pages to
+ * @plugindesc v1.01 (Requires YEP_StatusMenuCore.js) Add more pages to
  * your status menu however you want!
  * @author Yanfly Engine Plugins
  *
@@ -29,9 +29,6 @@ Yanfly.MSMP.version = 1.00;
  * custom pages as you want and insert whatever text inside of them! Use this
  * to create custom backstories, additional information regarding the actors,
  * and more!
- *
- * This is a collaboration plugin by Tigress and Yanfly to ensure compatibility
- * with the Yanfly Engine Plugins library.
  *
  * ============================================================================
  * Instructions
@@ -99,6 +96,16 @@ Yanfly.MSMP.version = 1.00;
  *
  *   <Status Menu Page Origin Switch: 1>
  *   <Status Menu Page Discipline Switch: 5, 6, 7, 8, 9, 10>
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

@@ -8,11 +8,11 @@ Imported.YEP_X_ItemRename = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.ItemRename = Yanfly.ItemRename || {};
-Yanfly.ItemRename.version = 1.00;
+Yanfly.ItemRename.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 (Requires YEP_ItemCore.js) Allows the player to
+ * @plugindesc v1.01 (Requires YEP_ItemCore.js) Allows the player to
  * rename independent items in their inventory.
  * @author Yanfly Engine Plugins + Sylvester Collaboration
  *
@@ -82,6 +82,16 @@ Yanfly.ItemRename.version = 1.00;
  *   <Cannot Rename>
  *   - This will set the item, weapon, or armor unable to be renameable
  *   regardless of the Default Rename plugin parameter.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

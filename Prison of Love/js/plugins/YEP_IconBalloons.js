@@ -8,20 +8,21 @@ Imported.YEP_IconBalloons = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IBalloon = Yanfly.IBalloon || {};
+Yanfly.IBalloon.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Allows you to use icons for your on-map balloons
+ * @plugindesc v1.01 Allows you to use icons for your on-map balloons
  * over your characters and events!
  * @author Yanfly Engine Plugins
  *
  * @param Empty Filename
+ * @type file
+ * @dir img/system/
+ * @require 1
  * @desc This is the filename of your empty balloon. Do not include
  * file extension here.
  * @default EmptyBalloon
- * @require 1
- * @dir img/system/
- * @type file
  *
  * @help
  * ============================================================================
@@ -70,6 +71,16 @@ Yanfly.IBalloon = Yanfly.IBalloon || {};
  *   balloon will be played on the player, event z, or follower z. If 'wait' is
  *   used, then the event will wait until the balloon has finished playing.
  *   When using this command, x cannot be greater than y.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

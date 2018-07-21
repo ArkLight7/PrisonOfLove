@@ -8,15 +8,18 @@ Imported.YEP_ScaleSprites = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.ScSpr = Yanfly.ScSpr || {};
-Yanfly.ScSpr.version = 1.00
+Yanfly.ScSpr.version = 1.01
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 This is a plugin that lets you scale sprites of
+ * @plugindesc v1.01 This is a plugin that lets you scale sprites of
  * smaller or larger sizes to certain dimensions.
  * @author Yanfly Engine Plugins
  *
  * @param Smoothing
+ * @type boolean
+ * @on Smoothing
+ * @off Normal
  * @desc Enable bitmap smoothing for scaled sprites?
  * YES - true     NO - false
  * @default true
@@ -40,6 +43,16 @@ Yanfly.ScSpr.version = 1.00
  * For example, if you had 'Actor2.png', rename it to 'Actor2 [48x48].png' to
  * make it appear 48x48 in game. Note that due to Pixi's scaling algorithm,
  * this effect works better when scaling down than scaling up.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 

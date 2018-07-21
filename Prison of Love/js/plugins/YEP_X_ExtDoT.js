@@ -10,11 +10,11 @@ Imported.YEP_X_ExtDoT = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EDoT = Yanfly.EDoT || {};
-Yanfly.EDoT.version = 1.00;
+Yanfly.EDoT.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 (Req YEP_BattleEngineCore & YEP_BuffsStatesCore)
+ * @plugindesc v1.02 (Req YEP_BattleEngineCore & YEP_BuffsStatesCore)
  * Create custom DoT formulas and effects with ease.
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -22,21 +22,26 @@ Yanfly.EDoT.version = 1.00;
  * @default
  *
  * @param Regen Animation
+ * @parent ---Defaults---
+ * @type animation
  * @desc When creating a regen state, this will be the default animation.
  * Leave at 0 to play no animation.
  * @default 46
  *
  * @param DoT Animation
+ * @type animation
  * @desc When creating a DoT state, this will be the default animation.
  * Leave at 0 to play no animation.
  * @default 59
  *
  * @param Default Variance
+ * @type number
  * @desc This is the default variance value for Extended DoT formulas.
  * Leave at 0 for no variance.
  * @default 20
  *
  * @param Default Element
+ * @type number
  * @desc This is the default element used for Extended DoT formulas.
  * Leave at 0 for no element.
  * @default 0
@@ -176,6 +181,19 @@ Yanfly.EDoT.version = 1.00;
  *   be changed within this formula, too. If 'variance' or 'element' are left
  *   out of the formula, they will take on their default values. If you are
  *   going to make a damaging effect, use the notetag above this one.
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ *
+ * Version 1.02:
+ * - Made DoT effects battle only to prevent errors and crashes.
+ *
+ * Version 1.01:
+ * - Updated for RPG Maker MV version 1.5.0.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  */
 //=============================================================================
 
@@ -272,6 +290,7 @@ Game_Battler.prototype.regenerateAll = function() {
 };
 
 Game_Battler.prototype.processDamageOverTimeStates = function() {
+  if (!$gameParty.inBattle()) return;
   var result = JsonEx.makeDeepCopy(this._result);
   var states = this.states();
   while (states.length > 0) {

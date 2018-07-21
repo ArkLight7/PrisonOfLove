@@ -1,0 +1,66 @@
+[
+null,
+{
+	"ID": 1,
+	"Name": "Smelting",
+	"IconID": 313,
+	"ExpFormula": "10*level",
+	"MaxLevel": 10,
+	"Categories": ["Ingots"],
+	"Background": "LavaCave"
+},
+{
+	"ID": 2,
+	"Name": "Smithing",
+	"IconID": 216,
+	"ExpFormula": "99 + 99 * (level*level)",
+	"MaxLevel": 150,
+	"Categories": ["Weapons", "Armors"],
+	"Background": "Blackness"
+},
+{
+	"ID": 3,
+	"Name": "Alchemy",
+	"IconID": 219,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Brewing", "Mixing"],
+	"Background": "Blackness"
+},
+{
+	"ID": 4,
+	"Name": "Cooking",
+	"IconID": 274,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Recipes"],
+	"Background": "Blackness"
+},
+{
+	"ID": 5,
+	"Name": "Leatherworking",
+	"IconID": 291,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Tanning"],
+	"Background": "Blackness"
+},
+{
+	"ID": 6,
+	"Name": "Weaving",
+	"IconID": 291,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Materials", "Armor"],
+	"Background": "Blackness"
+},
+{
+	"ID": 7,
+	"Name": "Woodworking",
+	"IconID": 295,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Items", "Weapons"],
+	"Background": "Blackness"
+}
+]

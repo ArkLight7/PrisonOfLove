@@ -8,7 +8,7 @@ Imported.YEP_X_PassiveAuras = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Aura = Yanfly.Aura || {};
-Yanfly.Aura.version = 1.04;
+Yanfly.Aura.version = 1.05;
 
 //=============================================================================
  /*:
@@ -179,6 +179,9 @@ Yanfly.Aura.version = 1.04;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.05:
+ * - Updated for RPG Maker MV version 1.5.0.
  *
  * Version 1.04:
  * - Bug fixed where if an aura is applied as the last action of a turn, it
