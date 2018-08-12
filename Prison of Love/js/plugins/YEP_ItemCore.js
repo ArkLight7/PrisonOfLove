@@ -8,11 +8,11 @@ Imported.YEP_ItemCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Item = Yanfly.Item || {};
-Yanfly.Item.version = 1.28;
+Yanfly.Item.version = 1.29;
 
 //=============================================================================
  /*:
- * @plugindesc v1.28 Changes the way Items are handled for your game
+ * @plugindesc v1.29 Changes the way Items are handled for your game
  * and the Item Scene, too.
  * @author Yanfly Engine Plugins
  *
@@ -396,6 +396,10 @@ Yanfly.Item.version = 1.28;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.29:
+ * - Updated for RPG Maker MV version 1.6.0:
+ *   Removal of the destructive code in Scene_Item.update function.
  *
  * Version 1.28:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1515,6 +1519,18 @@ Scene_Shop.prototype.doSell = function(number) {
     if (!DataManager.isIndependent(this._item)) return;
     DataManager.removeIndependentItem(this._item);
 };
+
+//=============================================================================
+// Scene_Item 1.6.0 Code Suppress
+//=============================================================================
+
+if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") {
+
+Scene_Item.prototype.update = function() {
+  Scene_ItemBase.prototype.update.call(this);
+};
+
+}; // Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0"
 
 //=============================================================================
 // Scene_Item Update

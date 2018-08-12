@@ -8,11 +8,11 @@ Imported.YEP_X_AnimatedSVEnemies = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.SVE = Yanfly.SVE || {};
-Yanfly.SVE.version = 1.18;
+Yanfly.SVE.version = 1.19;
 
 //=============================================================================
  /*:
- * @plugindesc v1.18 (Requires YEP_BattleEngineCore.js) This plugin lets
+ * @plugindesc v1.19 (Requires YEP_BattleEngineCore.js) This plugin lets
  * you use Animated Sideview Actors for enemies!
  * @author Yanfly Engine Plugins
  *
@@ -1648,6 +1648,10 @@ Yanfly.SVE.version = 1.18;
  * Changelog
  * ============================================================================
  *
+ * Version 1.19:
+ * - Bugfix provided by SwiftIllusion regarding the animation positioning on
+ * animated sideview enemies.
+ *
  * Version 1.18:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -2746,6 +2750,35 @@ Sprite_Enemy.prototype.forceMotion = function(motionType) {
     this._motion = newMotion;
     this._motionCount = 0;
     this._pattern = 0;
+};
+
+//=============================================================================
+// Sprite_Animation
+// ----------------------------------------------------------------------------
+// Code provided by SwiftIllusion
+//=============================================================================
+
+Yanfly.SVE.Sprite_Animation_updatePosition = 
+  Sprite_Animation.prototype.updatePosition;
+Sprite_Animation.prototype.updatePosition = function() {
+  Yanfly.SVE.Sprite_Animation_updatePosition.call(this);
+  this.updateSvePosition();
+};
+
+Sprite_Animation.prototype.updateSvePosition = function() {
+  if (typeof this._target.parent._battler != 'undefined'){
+    if (this._animation.position !== 3) {
+      if (this._animation.position === 0) {
+        if (this._target.parent._battler.isEnemy()) {
+          this.y -= this._target.parent._texture.height;
+        };
+      } else if (this._animation.position === 1) {
+        if (this._target.parent._battler.isEnemy()) {
+          this.y -= this._target.parent._texture.height / 2;
+        };
+      }
+    }
+  }
 };
 
 //=============================================================================

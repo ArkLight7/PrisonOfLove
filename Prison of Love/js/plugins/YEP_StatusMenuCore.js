@@ -8,11 +8,11 @@ Imported.YEP_StatusMenuCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Status = Yanfly.Status || {};
-Yanfly.Status.version = 1.03;
+Yanfly.Status.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 Changes the Status menu for your characters into
+ * @plugindesc v1.04 Changes the Status menu for your characters into
  * a hub that displays more character information.
  * @author Yanfly Engine Plugins
  *
@@ -521,6 +521,10 @@ Yanfly.Status.version = 1.03;
  * Changelog
  * ============================================================================
  *
+ * Version 1.04:
+ * - Added a function to split the icon and text for Attribute names so that
+ * icons will be centered properly if icons are used for the Attribute names.
+ *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -1022,6 +1026,16 @@ Window_StatusInfo.prototype.setRateColor = function(rate) {
     this.changeTextColor(this.textColor(colorId));
 };
 
+Window_StatusInfo.prototype.drawSplitIcon = function(name, dx, dy) {
+  if (name.match(/\\I\[(\d+)\]/i)) {
+    var icon = parseInt(RegExp.$1) || 0;
+    this.drawIcon(icon, dx, dy + 2);
+    return true;
+  } else {
+    return false;
+  }
+};
+
 Window_StatusInfo.prototype.drawElements = function() {
     this.drawElementColumnRects();
     this.drawElementInfo();
@@ -1306,6 +1320,11 @@ Window_StatusInfo.prototype.drawAttributeName = function(name, dx, dy, dw) {
     this.changeTextColor(this.systemColor());
     dx += this.textPadding();
     dw -= this.textPadding() * 2;
+    if (this.drawSplitIcon(name, dx, dy, dw)) {
+      dx += Window_Base._iconWidth + 4;
+      dw -= Window_Base._iconWidth + 4;
+      name = name.replace(/\\I\[(\d+)\]/i, '');
+    }
     dy += Math.floor((this.standardFontSize() - this.contents.fontSize) / 2);
     this._bypassResetText = true;
     this.changeTextColor(this.systemColor());

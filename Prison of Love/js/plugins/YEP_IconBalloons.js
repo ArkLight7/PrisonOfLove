@@ -8,11 +8,11 @@ Imported.YEP_IconBalloons = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IBalloon = Yanfly.IBalloon || {};
-Yanfly.IBalloon.version = 1.01;
+Yanfly.IBalloon.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Allows you to use icons for your on-map balloons
+ * @plugindesc v1.02 Allows you to use icons for your on-map balloons
  * over your characters and events!
  * @author Yanfly Engine Plugins
  *
@@ -52,6 +52,9 @@ Yanfly.IBalloon.version = 1.01;
  *
  *   ShowIconBalloon x on Follower y
  *   ShowIconBalloon x on Follower y, Wait
+ *
+ *   ShowIconBalloon x on This Event
+ *   ShowIconBalloon x on This Event, wait
  *   - This will cause the Icon Balloon using icon index x to appear on the
  *   player, event y, or follower y. If 'wait' is used, then the event will
  *   wait until the balloon has finished playing.
@@ -66,6 +69,9 @@ Yanfly.IBalloon.version = 1.01;
  *
  *   ShowIconBalloon x to y on Follower z
  *   ShowIconBalloon x to y on Follower z, Wait
+ *
+ *   ShowIconBalloon x to y on This Event
+ *   ShowIconBalloon x to y on This Event, Wait
  *   - This will cause the Icon Balloon start on icon index x and move through
  *   to y, the next icon upward each few frames up to icon index y. This icon
  *   balloon will be played on the player, event z, or follower z. If 'wait' is
@@ -75,6 +81,9 @@ Yanfly.IBalloon.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Added 'This Event' option to Show Icon balloons thanks to Eldaym!
  *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -154,7 +163,9 @@ Game_Interpreter.prototype.canShowIconBalloons = function() {
 };
 
 Game_Interpreter.prototype.processIconBalloons = function(str) {
-
+  // Addition made by Eldaym
+  str = str.replace('This Event', 'Event ' + this.eventId());
+  // Original
   if (str.match(/(\d+)[ ]TO[ ](\d+)[ ](.*)/i)) {
     var iconIndex1 = parseInt(RegExp.$1);
     var iconIndex2 = parseInt(RegExp.$2);

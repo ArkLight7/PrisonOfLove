@@ -724,6 +724,203 @@ Yanfly.Util.displayError = function(e, code, message) {
 };
 
 //=============================================================================
+// Default Effect Code
+//=============================================================================
+
+if (false) {
+
+// ----------
+// Flat Gains
+// ----------
+if (data.match(/([\+\-]\d+)[ ]HP/i)) {
+  value = parseInt(RegExp.$1);
+  user.gainHp(value);
+  animation = animation || hpAnimation;
+
+} else if (data.match(/([\+\-]\d+)[ ]MP/i)) {
+  value = parseInt(RegExp.$1);
+  user.gainMp(value);
+  animation = animation || mpAnimation;
+
+} else if (data.match(/([\+\-]\d+)[ ]TP/i)) {
+  value = parseInt(RegExp.$1);
+  user.gainTp(value);
+  animation = animation || tpAnimation;
+
+// ----------------
+// Percentile Gains
+// ----------------
+} else if (data.match(/([\+\-]\d+)([%％])[ ]HP/i)) {
+  rate = parseFloat(RegExp.$1) * 0.01;
+  value = Math.round(user.mhp * rate);
+  user.gainHp(value);
+  animation = animation || hpAnimation;
+
+} else if (data.match(/([\+\-]\d+)([%％])[ ]MP/i)) {
+  rate = parseFloat(RegExp.$1) * 0.01;
+  value = Math.round(user.mmp * rate);
+  user.gainMp(value);
+  animation = animation || mpAnimation;
+
+} else if (data.match(/([\+\-]\d+)([%％])[ ]TP/i)) {
+  rate = parseFloat(RegExp.$1) * 0.01;
+  value = Math.round(user.maxTp() * rate);
+  user.gainTp(value);
+  animation = animation || tpAnimation;
+
+// ------------------
+// Refund Skill Costs
+// ------------------
+} else if (data.match(/([\+\-]\d+)([%％])[ ]REFUND HP COST/i)) {
+  if (isSkill) {
+    rate = parseFloat(RegExp.$1) * 0.01;
+    value = Math.round(user.skillHpCost(skill) * rate);
+    user.gainHp(value);
+    animation = animation || hpAnimation;
+  } else {
+    skip = true;
+  }
+
+} else if (data.match(/([\+\-]\d+)([%％])[ ]REFUND MP COST/i)) {
+  if (isSkill) {
+    rate = parseFloat(RegExp.$1) * 0.01;
+    value = Math.round(user.skillMpCost(skill) * rate);
+    user.gainMp(value);
+    animation = animation || mpAnimation;
+  } else {
+    skip = true;
+  }
+
+} else if (data.match(/([\+\-]\d+)([%％])[ ]REFUND TP COST/i)) {
+  if (isSkill) {
+    rate = parseFloat(RegExp.$1) * 0.01;
+    value = Math.round(user.skillTpCost(skill) * rate);
+    user.gainTp(value);
+    animation = animation || tpAnimation;
+  } else {
+    skip = true;
+  }
+
+// -----------
+// Refund Item
+// -----------
+} else if (data.match(/(\d+)([%％])[ ]REFUND ITEM/i)) {
+  rate = parseFloat(RegExp.$1) * 0.01;
+  if (isItem && Math.random() < chance) {
+    $gameParty.gainItem(item, 1);
+    SoundManager.playUseItem();
+    animation = animation || itemAnimation;
+  } else {
+    skip = true;
+  }
+
+// ------------------------
+// Add/Remove Buffs/Debuffs
+// ------------------------
+} else if (data.match(/ADD[ ](.*)[ ]BUFF,[ ](\d+)[ ]TURN/i)) {
+  var str = String(RegExp.$1).toUpperCase();
+  var turns = parseInt(RegExp.$2);
+  var paramId = DataManager.getParamId(str);
+  if (paramId >= 0) {
+    user.addBuff(paramId, turns);
+  } else {
+    skip = true;
+  }
+  animation = animation || buffAnimation;
+
+} else if (data.match(/ADD[ ](.*)[ ]BUFF/i)) {
+  var str = String(RegExp.$1).toUpperCase();
+  var turns = 5;
+  var paramId = DataManager.getParamId(str);
+  if (paramId >= 0) {
+    user.addBuff(paramId, turns);
+  } else {
+    skip = true;
+  }
+  animation = animation || buffAnimation;
+
+} else if (data.match(/ADD[ ](.*)[ ]DEBUFF,[ ](\d+)[ ]TURN/i)) {
+  var str = String(RegExp.$1).toUpperCase();
+  var turns = parseInt(RegExp.$2);
+  var paramId = DataManager.getParamId(str);
+  if (paramId >= 0) {
+    user.addDebuff(paramId, turns);
+  } else {
+    skip = true;
+  }
+  animation = animation || debuffAnimation;
+
+} else if (data.match(/ADD[ ](.*)[ ]DEBUFF/i)) {
+  var str = String(RegExp.$1).toUpperCase();
+  var turns = 5;
+  var paramId = DataManager.getParamId(str);
+  if (paramId >= 0) {
+    user.addDebuff(paramId, turns);
+  } else {
+    skip = true;
+  }
+  animation = animation || debuffAnimation;
+
+} else if (data.match(/REMOVE[ ](.*)[ ](?:BUFF|DEBUFF)/i)) {
+  var str = String(RegExp.$1).toUpperCase();
+  var paramId = DataManager.getParamId(str);
+  if (paramId >= 0) {
+    user.removeBuff(paramId);
+  } else {
+    skip = true;
+  }
+  animation = animation || miscAnimation;
+
+// -----------------
+// Add/Remove States
+// -----------------
+} else if (data.match(/ADD STATE[ ](\d+)/i)) {
+  var stateId = parseInt(RegExp.$1);
+  user.addState(stateId);
+  animation = animation || addStateAnimation;
+
+} else if (data.match(/REMOVE STATE[ ](\d+)/i)) {
+  var stateId = parseInt(RegExp.$1);
+  if (user.isStateAffected(stateId)) {
+    user.removeState(stateId);
+    animation = animation || removeStateAnimation;
+  } else {
+    skip = true;
+  }
+
+// ----------------
+// Rolling Critical
+// ----------------
+} else if (data.match(/ROLLING CRITICAL[ ]([\+\-]\d+)([%％])/i)) {
+  if (isSkill) {
+    rate = parseFloat(RegExp.$1) * 0.01;
+    user._rollingCritical = user._rollingCritical || {};
+    user._rollingCritical[skill.id] = user._rollingCritical[skill.id] || 0;
+    user._rollingCritical[skill.id] += rate;
+  } else {
+    skip = true;
+  }
+
+} else if (data.match(/ROLLING CRITICAL[ ](\d+)([%％])/i)) {
+  if (isSkill) {
+    rate = parseFloat(RegExp.$1) * 0.01;
+    user._rollingCritical = user._rollingCritical || {};
+    user._rollingCritical[skill.id] = user._rollingCritical[skill.id] || 0;
+    user._rollingCritical[skill.id] = rate;
+  } else {
+    skip = true;
+  }
+
+// -------------------------------
+// Add new effects above this line
+// -------------------------------
+} else {
+  skip = true;
+}
+
+}; // Default Effect Code
+
+//=============================================================================
 // End of File
 //=============================================================================
 } else {

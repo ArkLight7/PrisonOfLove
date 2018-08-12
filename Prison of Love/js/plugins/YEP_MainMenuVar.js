@@ -8,11 +8,11 @@ Imported.YEP_MainMenuVar = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.MMVar = Yanfly.MMVar || {};
-Yanfly.MMVar.version = 1.01;
+Yanfly.MMVar.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Adds a new variable window to your main menu.
+ * @plugindesc v1.02 Adds a new variable window to your main menu.
  * You can use it to display up to 10 different variables!
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -293,6 +293,11 @@ Yanfly.MMVar.version = 1.01;
  * Changelog
  * ============================================================================
  *
+ * Version 1.02:
+ * - Compatibility update made with YEP_X_MoreCurrencies. If a variable has
+ * << and >> in its name, it will remove it the text in between like with the
+ * YEP_X_MoreCurrencies plugin.
+ *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -393,6 +398,9 @@ Window_MainMenuVariable.prototype.drawVariableData = function(i, x, y) {
   }
   var varId = Yanfly.Param.MMVarId[i];
   var name = $dataSystem.variables[varId];
+  if (Imported.YEP_X_MoreCurrencies) {
+    name = name.replace(/<<(.*?)>>/gi, '');
+  }
   this.drawTextEx(name, x, y);
   var value = Yanfly.Util.toGroup($gameVariables.value(varId));
   var width = this.contents.width - this.textPadding() * 2;

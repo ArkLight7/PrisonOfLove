@@ -8,11 +8,11 @@ Imported.YEP_CreditsPage = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Credits = Yanfly.Credits || {};
-Yanfly.Credits.version = 1.01
+Yanfly.Credits.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Adds a 'Credits' command to the title screen that
+ * @plugindesc v1.02 Adds a 'Credits' command to the title screen that
  * will take the player to a credits scene.
  * @author Yanfly Engine Plugins
  *
@@ -3055,8 +3055,24 @@ Yanfly.Credits.version = 1.01
  * empty line, provide at least one space ' ' in the text entry.
  *
  * ============================================================================
+ * Plugin Commands
+ * ============================================================================
+ *
+ * For those who wish to display the credits window from the map scene during
+ * the middle of your game, you can now do so with a plugin command!
+ *
+ * Plugin Command:
+ *
+ *   OpenCreditsWindow
+ *   - Opens the credit window from in-game during the map scene. This will
+ *   cause the player and events to be unable to move.
+ *
+ * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Added new plugin command 'OpenCreditsWindow'.
  *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -3087,14 +3103,51 @@ Yanfly.SetupParameters = function() {
 Yanfly.SetupParameters();
 
 //=============================================================================
+// Game_Map
+//=============================================================================
+
+Yanfly.Credits.Game_Map_isEventRunning = Game_Map.prototype.isEventRunning;
+Game_Map.prototype.isEventRunning = function() {
+  if ($gameTemp._creditsWindowOpen) return true;
+  return Yanfly.Credits.Game_Map_isEventRunning.call(this);
+};
+
+//=============================================================================
+// Game_Event
+//=============================================================================
+
+Yanfly.Credits.Game_Event_updateSelfMovement =
+  Game_Event.prototype.updateSelfMovement;
+Game_Event.prototype.updateSelfMovement = function() {
+  if ($gameTemp._creditsWindowOpen) return true;
+  Yanfly.Credits.Game_Event_updateSelfMovement.call(this);
+};
+
+//=============================================================================
+// Game_Interpreter
+//=============================================================================
+
+Yanfly.Credits.Game_Interpreter_pluginCommand =
+  Game_Interpreter.prototype.pluginCommand;
+Game_Interpreter.prototype.pluginCommand = function(command, args) {
+  Yanfly.Credits.Game_Interpreter_pluginCommand.call(this, command, args);
+  if (command === 'OpenCreditsWindow') {
+    if (SceneManager._scene instanceof Scene_Map) {
+      SceneManager._scene.openCreditsWindow();
+      $gameTemp._creditsWindowOpen = true;
+    }
+  }
+};
+
+//=============================================================================
 // Window_Command
 //=============================================================================
 
 Window_Command.prototype.addCommandAt = function(index, name, symbol, en, ext) {
-    if (en === undefined) enabled = true;
-    if (ext === undefined) ext = null;
-    var obj = { name: name, symbol: symbol, enabled: en, ext: ext};
-    this._list.splice(index, 0, obj);
+  if (en === undefined) enabled = true;
+  if (ext === undefined) ext = null;
+  var obj = { name: name, symbol: symbol, enabled: en, ext: ext};
+  this._list.splice(index, 0, obj);
 };
 
 //=============================================================================
@@ -3102,13 +3155,13 @@ Window_Command.prototype.addCommandAt = function(index, name, symbol, en, ext) {
 //=============================================================================
 
 Yanfly.Credits.Window_TitleCommand_makeCommandList =
-    Window_TitleCommand.prototype.makeCommandList;
+  Window_TitleCommand.prototype.makeCommandList;
 Window_TitleCommand.prototype.makeCommandList = function() {
-    Yanfly.Credits.Window_TitleCommand_makeCommandList.call(this);
-    var index = this.findSymbol('options');
-    var text = Yanfly.Param.CreditsCmdName;
-    var enabled = true;
-    this.addCommandAt(index, text, 'credits', enabled);
+  Yanfly.Credits.Window_TitleCommand_makeCommandList.call(this);
+  var index = this.findSymbol('options');
+  var text = Yanfly.Param.CreditsCmdName;
+  var enabled = true;
+  this.addCommandAt(index, text, 'credits', enabled);
 };
 
 //=============================================================================
@@ -3123,39 +3176,39 @@ Window_CreditsPage.prototype = Object.create(Window_Command.prototype);
 Window_CreditsPage.prototype.constructor = Window_CreditsPage;
 
 Window_CreditsPage.prototype.initialize = function() {
-    Window_Command.prototype.initialize.call(this, 0, 0);
-    this.openness = 0;
+  Window_Command.prototype.initialize.call(this, 0, 0);
+  this.openness = 0;
 };
 
 Window_CreditsPage.prototype.windowWidth = function() {
-    return Graphics.boxWidth;
+  return Graphics.boxWidth;
 };
 
 Window_CreditsPage.prototype.windowHeight = function() {
-    return Graphics.boxHeight;
+  return Graphics.boxHeight;
 };
 
 Window_CreditsPage.prototype.makeCommandList = function() {
-    for (var i = 0; i < 301; ++i) {
-      var text = Yanfly.Param.CreditsLine[i];
-      var url = Yanfly.Param.CreditsURL[i];
-      if (!text) continue;
-      if (text === '') continue;
-      this.addCommand(text, 'credit', true, url);
-    }
+  for (var i = 0; i < 301; ++i) {
+    var text = Yanfly.Param.CreditsLine[i];
+    var url = Yanfly.Param.CreditsURL[i];
+    if (!text) continue;
+    if (text === '') continue;
+    this.addCommand(text, 'credit', true, url);
+  }
 };
 
 Window_CreditsPage.prototype.drawItem = function(index) {
-    var rect = this.itemRectForText(index);
-    var align = this.itemTextAlign();
-    var text = this.commandName(index);
-    this.resetTextColor();
-    this.changePaintOpacity(this.isCommandEnabled(index));
-    this.drawTextEx(text, rect.x, rect.y, rect.width, align);
+  var rect = this.itemRectForText(index);
+  var align = this.itemTextAlign();
+  var text = this.commandName(index);
+  this.resetTextColor();
+  this.changePaintOpacity(this.isCommandEnabled(index));
+  this.drawTextEx(text, rect.x, rect.y, rect.width, align);
 };
 
 Window_CreditsPage.prototype.playOkSound = function() {
-    if (this.currentExt() !== '') SoundManager.playOk();
+  if (this.currentExt() !== '') SoundManager.playOk();
 };
 
 //=============================================================================
@@ -3163,43 +3216,84 @@ Window_CreditsPage.prototype.playOkSound = function() {
 //=============================================================================
 
 Yanfly.Credits.Scene_Title_createCommandWindow =
-    Scene_Title.prototype.createCommandWindow;
+  Scene_Title.prototype.createCommandWindow;
 Scene_Title.prototype.createCommandWindow = function() {
-    Yanfly.Credits.Scene_Title_createCommandWindow.call(this);
-    this.createCreditsWindow();
-    this._commandWindow.setHandler('credits',  this.commandCredits.bind(this));
+  Yanfly.Credits.Scene_Title_createCommandWindow.call(this);
+  this.createCreditsWindow();
+  this._commandWindow.setHandler('credits',  this.commandCredits.bind(this));
 };
 
 Scene_Title.prototype.createCreditsWindow = function() {
-    this._creditsWindow = new Window_CreditsPage();
-    this._creditsWindow.setHandler('cancel', this.onCreditsCancel.bind(this));
-    this._creditsWindow.setHandler('ok', this.onCreditsOk.bind(this));
-    this.addWindow(this._creditsWindow);
+  this._creditsWindow = new Window_CreditsPage();
+  this._creditsWindow.setHandler('cancel', this.onCreditsCancel.bind(this));
+  this._creditsWindow.setHandler('ok', this.onCreditsOk.bind(this));
+  this.addWindow(this._creditsWindow);
 };
 
 Scene_Title.prototype.commandCredits = function() {
-    this._commandWindow.close();
-    this._creditsWindow.select(0);
-    this._creditsWindow.activate();
-    this._creditsWindow.open();
+  this._commandWindow.close();
+  this._creditsWindow.select(0);
+  this._creditsWindow.activate();
+  this._creditsWindow.open();
 };
 
 Scene_Title.prototype.onCreditsCancel = function() {
-    this._creditsWindow.close();
-    this._commandWindow.activate();
-    this._commandWindow.open();
+  this._creditsWindow.close();
+  this._commandWindow.activate();
+  this._commandWindow.open();
 };
 
 Scene_Title.prototype.onCreditsOk = function() {
-    this._creditsWindow.activate();
-    var url = this._creditsWindow.currentExt();
-    if (url === '') return;
-    var win = window.open(url, '_blank');
-    if (win) {
-      win.focus();
-    } else if (Imported.YEP_ExternalLinks) {
-      SceneManager.openPopupBlockerMessage();
-    }
+  this._creditsWindow.activate();
+  var url = this._creditsWindow.currentExt();
+  if (url === '') return;
+  var win = window.open(url, '_blank');
+  if (win) {
+    win.focus();
+  } else if (Imported.YEP_ExternalLinks) {
+    SceneManager.openPopupBlockerMessage();
+  }
+};
+
+//=============================================================================
+// Scene_Map
+//=============================================================================
+
+Yanfly.Credits.Scene_Map_createAllWindows =
+  Scene_Map.prototype.createAllWindows;
+Scene_Map.prototype.createAllWindows = function() {
+  Yanfly.Credits.Scene_Map_createAllWindows.call(this);
+  this.createCreditsWindow();
+};
+
+Scene_Map.prototype.createCreditsWindow = function() {
+  this._creditsWindow = new Window_CreditsPage();
+  this._creditsWindow.setHandler('cancel', this.onCreditsCancel.bind(this));
+  this._creditsWindow.setHandler('ok', this.onCreditsOk.bind(this));
+  this.addWindow(this._creditsWindow);
+};
+
+Scene_Map.prototype.openCreditsWindow = function() {
+  this._creditsWindow.select(0);
+  this._creditsWindow.activate();
+  this._creditsWindow.open();
+};
+
+Scene_Map.prototype.onCreditsCancel = function() {
+  this._creditsWindow.close();
+  $gameTemp._creditsWindowOpen = false;
+};
+
+Scene_Map.prototype.onCreditsOk = function() {
+  this._creditsWindow.activate();
+  var url = this._creditsWindow.currentExt();
+  if (url === '') return;
+  var win = window.open(url, '_blank');
+  if (win) {
+    win.focus();
+  } else if (Imported.YEP_ExternalLinks) {
+    SceneManager.openPopupBlockerMessage();
+  }
 };
 
 //=============================================================================

@@ -12,7 +12,7 @@ Yanfly.EMP1.version = 1.11;
 
 //=============================================================================
  /*:
- * @plugindesc v1.11 (Requires YEP_MessageCore.js) Letter Sounds, NameBox
+ * @plugindesc v1.12 (Requires YEP_MessageCore.js) Letter Sounds, NameBox
  * Background Types, Choice Control, and more!
  * @author Yanfly Engine Plugins
  *
@@ -710,6 +710,10 @@ Yanfly.EMP1.version = 1.11;
  * Changelog
  * ============================================================================
  *
+ * Version 1.12:
+ * - Updated message choices to properly show the correct number of rows if an
+ * inadequate number of rows are visible.
+ *
  * Version 1.11:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -1299,35 +1303,39 @@ Window_Base.prototype.getTextExHeight = function(text, x, y) {
 Yanfly.EMP1.Window_ChoiceList_numVisibleRows =
     Window_ChoiceList.prototype.numVisibleRows;
 Window_ChoiceList.prototype.numVisibleRows = function() {
-    var messageY = this._messageWindow.y;
-    var messageHeight = this._messageWindow.height;
-    var centerY = Graphics.boxHeight / 2;
-    var choices = $gameMessage.choices();
-    var numLines = choices.length;
-    var maxLines = $gameSystem.getMessageChoiceRows();
-    if (messageY < centerY && messageY + messageHeight > centerY) {
-      maxLines = 4;
-    }
-    if (numLines > maxLines) {
-      numLines = maxLines;
-    }
-    return Math.max(1, numLines);
+  var messageY = this._messageWindow.y;
+  var messageHeight = this._messageWindow.height;
+  var centerY = Graphics.boxHeight / 2;
+  // var choices = $gameMessage.choices();
+  // var numLines = choices.length;
+  this.makeCommandList();
+  var numLines = this._maxChoices;
+  var maxLines = $gameSystem.getMessageChoiceRows();
+  if (messageY < centerY && messageY + messageHeight > centerY) {
+    maxLines = 4;
+  }
+  if (numLines > maxLines) {
+    numLines = maxLines;
+  }
+  return Math.max(1, numLines);
 };
 
 Window_ChoiceList.prototype.makeCommandList = function() {
-    this._cancelAllowed = true;
-    var choices = $gameMessage.choices();
-    for (var i = 0; i < choices.length; i++) {
-      if (!$gameSystem.isChoiceShown(i)) {
-        if ($gameMessage.choiceCancelType() === i) this._cancelAllowed = false;
-        continue;
-      }
-      var enabled = $gameSystem.isChoiceEnabled(i);
-      this.addCommand(choices[i], 'choice', enabled, i);
-      if (!enabled) {
-        if ($gameMessage.choiceCancelType() === i) this._cancelAllowed = false;
-      }
+  this._maxChoices = 0;
+  this._cancelAllowed = true;
+  var choices = $gameMessage.choices();
+  for (var i = 0; i < choices.length; i++) {
+    if (!$gameSystem.isChoiceShown(i)) {
+      if ($gameMessage.choiceCancelType() === i) this._cancelAllowed = false;
+      continue;
     }
+    this._maxChoices += 1;
+    var enabled = $gameSystem.isChoiceEnabled(i);
+    this.addCommand(choices[i], 'choice', enabled, i);
+    if (!enabled) {
+      if ($gameMessage.choiceCancelType() === i) this._cancelAllowed = false;
+    }
+  }
 };
 
 Yanfly.EMP1.Window_ChoiceList_drawItem = Window_ChoiceList.prototype.drawItem;

@@ -8,11 +8,11 @@ Imported.YEP_CoreEngine = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Core = Yanfly.Core || {};
-Yanfly.Core.version = 1.25;
+Yanfly.Core.version = 1.28;
 
 //=============================================================================
 /*:
- * @plugindesc v1.25 Needed for the majority of Yanfly Engine Scripts. Also
+ * @plugindesc v1.28 Needed for the majority of Yanfly Engine Scripts. Also
  * contains bug fixes found inherently in RPG Maker.
  * @author Yanfly Engine Plugins
  *
@@ -254,6 +254,36 @@ Yanfly.Core.version = 1.25;
  * @desc Show events for the battle background snapshot?
  * SHOW - true     HIDE - false     Default: false
  * @default true
+ *
+ * @param ---Map Optimization---
+ * @desc
+ *
+ * @param Refresh Update HP
+ * @parent ---Map Optimization---
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Do a full actor refresh when updating HP on map?
+ * YES - true     NO - false     Default: true
+ * @default true
+ *
+ * @param Refresh Update MP
+ * @parent ---Map Optimization---
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Do a full actor refresh when updating MP on map?
+ * YES - true     NO - false     Default: true
+ * @default true
+ *
+ * @param Refresh Update TP
+ * @parent ---Map Optimization---
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Do a full actor refresh when updating TP on map?
+ * YES - true     NO - false     Default: true
+ * @default false
  *
  * @param ---Font---
  * @desc
@@ -682,6 +712,27 @@ Yanfly.Core.version = 1.25;
  * Changelog
  * ============================================================================
  *
+ * Version 1.28:
+ * - Upon pressing F5 to reload your game, this will close the DevTools Debug
+ * Console if it is opened before reloading. This is because reloading with it
+ * closed ends up reloading the game faster.
+ * - New plugin parameters added: Refresh Update HP, MP, and TP
+ *   - Option to choose to do a full actor refresh upon changing HP, MP, or TP
+ *   - This is to reduce overall map lagging.
+ *
+ * Version 1.27:
+ * - Updated for RPG Maker MV version 1.6.0:
+ *   - Fixing script call checks made with switches and self switches under
+ *   conditional branches due to how ES6 handles === differently.
+ *
+ * Version 1.26:
+ * - Updated for RPG Maker MV version 1.6.0:
+ *   - Removal of the destructive code in Scene_Item.update function.
+ *   - Open Console parameter now occurs after the map's been loaded or after
+ *   the battle has started. This is because after the 1.6.0 changes, loading
+ *   the console before anything else will lock up other aspects of RPG Maker
+ *   from loading properly.
+ *
  * Version 1.25:
  * - Updated for RPG Maker MV version 1.5.0.
  * - Updated Scale Title and Scale GameOver to work with 1.5.0.
@@ -855,6 +906,13 @@ Yanfly.Param.ShowEvTrans = String(Yanfly.Parameters['Show Events Transition']);
 Yanfly.Param.ShowEvTrans = eval(Yanfly.Param.ShowEvTrans);
 Yanfly.Param.ShowEvSnap = String(Yanfly.Parameters['Show Events Snapshot']);
 Yanfly.Param.ShowEvSnap = eval(Yanfly.Param.ShowEvSnap);
+
+Yanfly.Param.RefreshUpdateHp = String(Yanfly.Parameters['Refresh Update HP']);
+Yanfly.Param.RefreshUpdateHp = eval(Yanfly.Param.RefreshUpdateHp);
+Yanfly.Param.RefreshUpdateMp = String(Yanfly.Parameters['Refresh Update MP']);
+Yanfly.Param.RefreshUpdateMp = eval(Yanfly.Param.RefreshUpdateMp);
+Yanfly.Param.RefreshUpdateTp = String(Yanfly.Parameters['Refresh Update TP']);
+Yanfly.Param.RefreshUpdateTp = eval(Yanfly.Param.RefreshUpdateTp);
 
 Yanfly.Param.ChineseFont = String(Yanfly.Parameters['Chinese Font']);
 Yanfly.Param.KoreanFont = String(Yanfly.Parameters['Korean Font']);
@@ -1195,8 +1253,9 @@ SceneManager._boxHeight    = Yanfly.Param.ScreenHeight
 Yanfly.Core.SceneManager_run = SceneManager.run;
 SceneManager.run = function(sceneClass) {
   Yanfly.Core.SceneManager_run.call(this, sceneClass);
-  if (!Utils.isNwjs()) return;
   Yanfly.updateResolution();
+  if (!Utils.isNwjs()) return;
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Yanfly.Param.OpenConsole) Yanfly.openConsole();
 };
 
@@ -1210,12 +1269,54 @@ Yanfly.updateResolution = function() {
 };
 
 Yanfly.openConsole = function() {
+  Yanfly._openedConsole = true;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     var _debugWindow = require('nw.gui').Window.get().showDevTools();
-    _debugWindow.moveTo(0, 0);
+    if (_debugWindow) _debugWindow.moveTo(0, 0);
     window.focus();
   }
 };
+
+Yanfly.Core.SceneManager_onKeyDown = SceneManager.onKeyDown;
+SceneManager.onKeyDown = function(event) {
+  if (!event.ctrlKey && !event.altKey && event.keyCode === 116) {
+    if (Utils.isNwjs() && Utils.isOptionValid('test')) {
+      var win = require('nw.gui').Window.get();
+      win.closeDevTools();
+    }
+  }
+  Yanfly.Core.SceneManager_onKeyDown.call(this, event);
+};
+
+if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") {
+
+Yanfly.openConsole = function() {
+  Yanfly._openedConsole = true;
+  if (!Yanfly.Param.OpenConsole) return;
+  if (Utils.isNwjs() && Utils.isOptionValid('test')) {
+    var win = require('nw.gui').Window.get();
+    win.showDevTools();
+    setTimeout(this.focusWindow.bind(this, win), 500);
+  }
+};
+
+Yanfly.focusWindow = function(win) {
+  win.focus();
+};
+
+Yanfly.Core.Scene_Map_update = Scene_Map.prototype.update;
+Scene_Map.prototype.update = function() {
+  Yanfly.Core.Scene_Map_update.call(this);
+  if (!Yanfly._openedConsole) Yanfly.openConsole();
+};
+
+Yanfly.Core.Scene_Battle_update = Scene_Battle.prototype.update;
+Scene_Battle.prototype.update = function() {
+  Yanfly.Core.Scene_Battle_update.call(this);
+  if (!Yanfly._openedConsole) Yanfly.openConsole();
+};
+
+}; // 1.6.0
 
 //=============================================================================
 // BattleManager
@@ -1260,6 +1361,61 @@ Game_BattlerBase.prototype.paramMax = function(paramId) {
     } else {
         return Yanfly.Param.EnemyParam;
     }
+};
+
+Yanfly.Core.Game_BattlerBase_refresh = Game_BattlerBase.prototype.refresh;
+
+Game_BattlerBase.prototype.mapRegenUpdateCheck = function(type) {
+  if ($gameParty.inBattle()) return true;
+  if (type === 'hp') {
+    return Yanfly.Param.RefreshUpdateHp;
+  } else if (type === 'mp') {
+    return Yanfly.Param.RefreshUpdateMp;
+  } else if (type === 'tp') {
+    return Yanfly.Param.RefreshUpdateTp;
+  }
+};
+
+Game_BattlerBase.prototype.setHp = function(hp) {
+  if (this._hp === hp) return;
+  this._hp = hp;
+  if (this.mapRegenUpdateCheck('hp')) {
+    this.refresh();
+  } else {
+    Yanfly.Core.Game_BattlerBase_refresh.call(this);
+  }
+};
+
+Game_BattlerBase.prototype.setMp = function(mp) {
+  if (this._mp === mp) return;
+  this._mp = mp;
+  if (this.mapRegenUpdateCheck('mp')) {
+    this.refresh();
+  } else {
+    Yanfly.Core.Game_BattlerBase_refresh.call(this);
+  }
+};
+
+Game_BattlerBase.prototype.setTp = function(tp) {
+  if (this._tp === tp) return;
+  this._tp = tp;
+  if (this.mapRegenUpdateCheck('tp')) {
+    this.refresh();
+  } else {
+    Yanfly.Core.Game_BattlerBase_refresh.call(this);
+  }
+};
+
+//=============================================================================
+// Game_Battler
+//=============================================================================
+
+Game_Battler.prototype.onTurnEnd = function() {
+  this.clearResult();
+  this.regenerateAll();
+  this.updateStateTurns();
+  this.updateBuffTurns();
+  this.removeStatesAuto(2);
 };
 
 //=============================================================================
@@ -1512,6 +1668,29 @@ Yanfly.Core.Game_Interpreter_command111 =
 Game_Interpreter.prototype.command111 = function() {
   var result = false;
   switch (this._params[0]) {
+  case 0: // Switch
+    if (this._params[2] === 0) {
+      result = $gameSwitches.value(this._params[1]);
+    } else {
+      result = !$gameSwitches.value(this._params[1]);
+    }
+    this._branch[this._indent] = result;
+    if (this._branch[this._indent] === false) this.skipBranch();
+    return true
+    break;
+  case 2: // Self Switch
+    if (this._eventId > 0) {
+      var key = [this._mapId, this._eventId, this._params[1]];
+      if (this._params[2] === 0) {
+        result = $gameSelfSwitches.value(key);
+      } else {
+        result = !$gameSelfSwitches.value(key);
+      }
+    }
+    this._branch[this._indent] = result;
+    if (this._branch[this._indent] === false) this.skipBranch();
+    return true
+    break;
   case 12:  // Script
     var code = this._params[1];
     try {
@@ -1658,6 +1837,18 @@ Scene_Boot.prototype.isGameFontLoaded = function() {
     }
   }
 };
+
+//=============================================================================
+// Scene_Item
+//=============================================================================
+
+if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") {
+
+Scene_Item.prototype.update = function() {
+  Scene_ItemBase.prototype.update.call(this);
+};
+
+}; // Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0"
 
 //=============================================================================
 // Scene_Title

@@ -8,11 +8,11 @@ Imported.YEP_ItemSynthesis = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IS = Yanfly.IS || {};
-Yanfly.IS.version = 1.09;
+Yanfly.IS.version = 1.10;
 
 //=============================================================================
  /*:
- * @plugindesc v1.09 Players can now craft their own items in-game
+ * @plugindesc v1.10 Players can now craft their own items in-game
  * through an item synthesis system.
  * @author Yanfly Engine Plugins
  *
@@ -161,6 +161,15 @@ Yanfly.IS.version = 1.09;
  * @parent ---List Window---
  * @desc This is the text used for the amount to synthesize.
  * @default Quantity
+ *
+ * @param Amount Format
+ * @parent ---List Window---
+ * @type boolean
+ * @on Need/Own
+ * @off Own/Need
+ * @desc Show the number of ingredients needed over owned?
+ * true - Need/Own     false - Own/Need
+ * @default false
  *
  * @param Quantity Text Size
  * @parent ---List Window---
@@ -335,6 +344,10 @@ Yanfly.IS.version = 1.09;
  * Changelog
  * ============================================================================
  *
+ * Version 1.10:
+ * - Added 'Amount Format' plugin parameter. Now you can switch the way the
+ * needed ingredients are shown between Need/Own and Own/Need.
+ *
  * Version 1.09:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -407,6 +420,7 @@ Yanfly.Param.ISMaskItalic = eval(Yanfly.Param.ISMaskItalic);
 Yanfly.Param.ISMaskHelpText = String(Yanfly.Parameters['Mask Help Text']);
 Yanfly.Param.ISIngredientsList = String(Yanfly.Parameters['Ingredients Text']);
 Yanfly.Param.ISAmountText = String(Yanfly.Parameters['Amount Text']);
+Yanfly.Param.ISAmountFmt = eval(Yanfly.Parameters['Amount Format'] || 'false');
 Yanfly.Param.ISQuantitySize = Number(Yanfly.Parameters['Quantity Text Size']);
 
 Yanfly.Param.ISDefSEName = String(Yanfly.Parameters['Default SE']);
@@ -1169,7 +1183,12 @@ Window_SynthesisIngredients.prototype.drawItemDetails = function(index, wy) {
     if (!ingredient) return wy;
     this.resetFontSettings();
     this.drawItemName.call(this, ingredient, 0, wy, ww);
-    this.drawItemQuantity(index, wy);
+    if (Yanfly.Param.ISAmountFmt) {
+      this.drawItemQuantity(index, wy);
+    } else {
+      this.drawItemQuantity2(index, wy);
+    }
+    
     return wy + this.lineHeight();
 };
 
@@ -1188,6 +1207,25 @@ Window_SynthesisIngredients.prototype.drawItemQuantity = function(index, wy) {
       this.changeTextColor(this.powerDownColor());
     }
     var text = String(Yanfly.Util.toGroup(quantity));
+    this.drawText(text, 0, wy, ww, 'right');
+}
+
+Window_SynthesisIngredients.prototype.drawItemQuantity2 = function(index, wy) {
+    var ingredient = DataManager.getSynthesisIngredient(this._item, index);
+    var quantity = DataManager.getSynthesisQuantity(this._item, index);
+    var owned = $gameParty.numItems(ingredient);
+    var ww = this.contents.width;
+    this.contents.fontSize = Yanfly.Param.ISQuantitySize;
+    this.changeTextColor(this.normalColor());
+    var num = '/' + Yanfly.Util.toGroup(quantity);
+    this.drawText(num, 0, wy, ww, 'right');
+    ww -= this.textWidth(num);
+    if ($gameParty.numItems(ingredient) >= quantity) {
+      this.changeTextColor(this.powerUpColor());
+    } else {
+      this.changeTextColor(this.powerDownColor());
+    }
+    var text = String(Yanfly.Util.toGroup(owned));
     this.drawText(text, 0, wy, ww, 'right');
 }
 

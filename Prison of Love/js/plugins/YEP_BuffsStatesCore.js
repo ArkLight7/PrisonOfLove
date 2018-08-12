@@ -8,11 +8,11 @@ Imported.YEP_BuffsStatesCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.BSC = Yanfly.BSC || {};
-Yanfly.BSC.version = 1.14;
+Yanfly.BSC.version = 1.15;
 
 //=============================================================================
  /*:
- * @plugindesc v1.14 Alter the basic mechanics behind buffs and states
+ * @plugindesc v1.15 Alter the basic mechanics behind buffs and states
  * that aren't adjustable within the RPG Maker editor.
  * @author Yanfly Engine Plugins
  *
@@ -592,7 +592,7 @@ Yanfly.BSC.version = 1.14;
  *
  * There are a couple of notetags you can use for states:
  *
- *   <Counter Font Size>
+ *   <Counter Font Size: x>
  *   This adjusts the font size of the counter.
  *
  *   <Counter Alignment: left>
@@ -639,8 +639,12 @@ Yanfly.BSC.version = 1.14;
  * Changelog
  * ============================================================================
  *
+ * Version 1.15:
+ * - Updated for RPG Maker MV version 1.6.1.
+ *
  * Version 1.14:
  * - Updated for RPG Maker MV version 1.5.0.
+ * - Fixed documentation error.
  *
  * Version 1.13:
  * - Custom Turn End effects will no longer occur outside of battle.
@@ -1484,8 +1488,8 @@ Game_Battler.prototype.regenerateStateEffects = function(stateId) {
 
 Yanfly.BSC.Game_Battler_regenerateAll = Game_Battler.prototype.regenerateAll;
 Game_Battler.prototype.regenerateAll = function() {
-    this.onRegenerateStateEffects();
-    Yanfly.BSC.Game_Battler_regenerateAll.call(this);
+  if ($gameParty.inBattle()) this.onRegenerateStateEffects();
+  Yanfly.BSC.Game_Battler_regenerateAll.call(this);
 };
 
 if (Imported.YEP_BattleEngineCore) {

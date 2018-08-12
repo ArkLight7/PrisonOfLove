@@ -61,6 +61,9 @@ Yanfly.Subclass.version = 1.11
  *
  * @param MaxHP
  * @parent ---Parameters---
+ * @type number
+ * @decimals 2
+ * @min 0
  * @desc What rate of the Subclass MaxHP should be added?
  * @default 0.10
  *

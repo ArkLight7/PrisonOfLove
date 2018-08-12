@@ -8,11 +8,11 @@ Imported.YEP_X_MoreStatusPages = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.MSMP = Yanfly.MSMP || {};
-Yanfly.MSMP.version = 1.01;
+Yanfly.MSMP.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 (Requires YEP_StatusMenuCore.js) Add more pages to
+ * @plugindesc v1.02 (Requires YEP_StatusMenuCore.js) Add more pages to
  * your status menu however you want!
  * @author Yanfly Engine Plugins
  *
@@ -21,8 +21,8 @@ Yanfly.MSMP.version = 1.01;
  * Introduction
  * ============================================================================
  *
- * This plugin requires YEP_X_MoreStatusPages. Make sure this plugin is located
- * under YEP_X_MoreStatusPages in the plugin list.
+ * This plugin requires YEP_StatusMenuCore. Make sure this plugin is located
+ * under YEP_StatusMenuCore in the plugin list.
  *
  * Sometimes, you'll want to be able to place more information in each party
  * member's status menu page. This extension menu allows you to create as many
@@ -100,6 +100,10 @@ Yanfly.MSMP.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Fixed a bug that crashed the game if certain actors did not have the same
+ * status page keys as others when changing between actors.
  *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -252,10 +256,13 @@ Yanfly.MSMP.Window_StatusInfo_maxItems = Window_StatusInfo.prototype.maxItems;
 Window_StatusInfo.prototype.maxItems = function() {
   if (this._symbol === 'morePages') {
     var pageKey = SceneManager._scene._commandWindow.currentExt();
-    return this._actor.actor().customStatusMenuPagesData[pageKey].length;
-  } else {
-    return Yanfly.MSMP.Window_StatusInfo_maxItems.call(this);
+    if (this._actor.actor().customStatusMenuPagesData) {
+      if (this._actor.actor().customStatusMenuPagesData[pageKey]) {
+        return this._actor.actor().customStatusMenuPagesData[pageKey].length;
+      }
+    }
   }
+  return Yanfly.MSMP.Window_StatusInfo_maxItems.call(this);
 };
 
 Yanfly.MSMP.Window_StatusInfo_drawItem = Window_StatusInfo.prototype.drawItem;
@@ -268,6 +275,8 @@ Window_StatusInfo.prototype.drawItem = function(index) {
 
 Window_StatusInfo.prototype.drawMoreStatusPageContent = function(index) {
   var pageKey = SceneManager._scene._commandWindow.currentExt();
+  if (!this._actor.actor().customStatusMenuPagesData) return;
+  if (!this._actor.actor().customStatusMenuPagesData[pageKey]) return;
   var data = this._actor.actor().customStatusMenuPagesData[pageKey];
   var text = data[index];
   var rect = this.itemRectForText(index);

@@ -23,8 +23,8 @@ Yanfly.EMvP1.version = 1.01;
  * Introduction
  * ============================================================================
  *
- * This plugin requires YEP_X_ExtMovePack1.
- * Make sure this plugin is located under YEP_X_ExtMovePack1 in the plugin list.
+ * This plugin requires YEP_MoveRouteCore. Make sure this plugin is located
+ * under YEP_MoveRouteCore in the plugin list.
  *
  * This plugin adds extra simplified move routes for your events with the main
  * intention of creating specific behaviors in movement patterns. The patterns

@@ -8,11 +8,11 @@ Imported.YEP_SkillLearnSystem = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.SLS = Yanfly.SLS || {};
-Yanfly.SLS.version = 1.14;
+Yanfly.SLS.version = 1.16;
 
 //=============================================================================
  /*:
- * @plugindesc v1.14 Allows actors to learn skills from the skill menu
+ * @plugindesc v1.16 Allows actors to learn skills from the skill menu
  * through crafting them via items or otherwise.
  * @author Yanfly Engine Plugins
  *
@@ -282,6 +282,12 @@ Yanfly.SLS.version = 1.14;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.16:
+ * - Fixed a bug with the JP Cost not loading properly and causing a crash.
+ *
+ * Version 1.15:
+ * - Fixed a bug that did not count custom eval costs as a cost.
  *
  * Version 1.14:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1174,12 +1180,19 @@ Window_SkillLearnData.prototype.drawCostText = function(wy) {
 
 Window_SkillLearnData.prototype.hasLearnCost = function() {
     if (this._skill.learnCostGold > 0) return true;
+    var skill = this._skill;
     if (Imported.YEP_JobPoints) {
-      var cost = this._skill.learnCostJp;
-      cost += this._actor.customLearnSkillJpCost(this._skill);
+      var cost = skill.learnCostJp;
+      cost += this._actor.customLearnSkillJpCost(skill);
       return cost > 0;
     } 
-    if (this._skill.learnCost.length > 0) return true;
+    if (skill.learnCost.length > 0) return true;
+    if (skill.learnRequireEval && skill.learnRequireEval.length > 0) {
+      return true;
+    }
+    if (skill.learnCustomText && skill.learnCustomText.length > 0) {
+      return true; 
+    }
     return false;
 };
 
