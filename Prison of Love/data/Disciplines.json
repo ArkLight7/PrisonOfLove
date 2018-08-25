@@ -33,7 +33,7 @@ null,
 	"IconID": 274,
 	"ExpFormula": "50 + 25 * level",
 	"MaxLevel": 150,
-	"Categories": ["Recipes"],
+	"Categories": ["Recipes", "Prepare"],
 	"Background": "Blackness"
 },
 {
