@@ -8,11 +8,11 @@ Imported.YEP_Z_PassiveCases = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.LunPasCas = Yanfly.LunPasCas || {};
-Yanfly.LunPasCas.version = 1.00;
+Yanfly.LunPasCas.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 (Lunatic Pack) Create conditional cases for your passive
+ * @plugindesc v1.01 (Lunatic Pack) Create conditional cases for your passive
  * states through an easy and elaborate method!
  * @author Yanfly Engine Plugins
  *
@@ -289,6 +289,10 @@ Yanfly.LunPasCas.version = 1.00;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.01:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.00:
  * - Finished Plugin!
@@ -587,6 +591,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();
