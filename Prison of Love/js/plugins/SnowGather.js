@@ -179,9 +179,9 @@ DataManager.isDatabaseLoaded = function() {
 
 // Save and Load Stuff
 
-var Snow_Gather_DataManager_makeSaveContents = DataManager.makeSaveContents;
+var Snow_Gather_DataManager_makeSaveContents = DataManager.makeSaveContents; 
 DataManager.makeSaveContents = function() {
-    contents = Snow_Gather_DataManager_makeSaveContents.call(this);
+   var contents = Snow_Gather_DataManager_makeSaveContents.call(this);
     contents.gathering = Snow.Gather.WaitingEvents;
     return contents;
 }
@@ -404,7 +404,7 @@ Snow.Gather.Gather = function(requireItem, recievableItems, commonEvent, event) 
 			var gen = Snow.Gather.Round(Snow.Gather.RandomInt(), 2);
 			for (var j = 0; j < hand.harvestChance.length; j++) {
 				if (hand.harvestChance[j].itemId == itemisedRecievableItems[i].id) {
-					if (gen <= hand.harvestChance[j].harvestChance) {
+					if (gen <= hand.chaceHarvest[j].harvestChance) {
 						var itemGathered = Snow.Gather.RandomIntRange(itemisedRecievableItems[i].harvestMinimum, itemisedRecievableItems[i].harvestMaximum);
 						$gameParty.gainItem(itemisedRecievableItems[i], itemGathered);
 						if (MVC.Boolean(String(Snow.Gather.Parameters["Last Result Store"]))) {
