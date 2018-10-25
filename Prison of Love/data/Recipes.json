@@ -473,7 +473,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 1,
 	"Learned": "start"
@@ -520,7 +520,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 5,
 	"LevelReq": 2,
 	"Learned": "levelhit"
@@ -547,7 +547,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 1,
 	"Learned": "start"
@@ -606,8 +606,8 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
-	"XP": 1,
+	"Category": ["Dishes"],
+	"XP": 10,
 	"LevelReq": 4,
 	"Learned": "levelhit"
 },
@@ -646,22 +646,7 @@ null,
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 232,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 233,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 94,
+			"ID": 259,
 			"Amount": 1
 		},
 		{
@@ -670,9 +655,9 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
-	"LevelReq": 4,
+	"LevelReq": 3,
 	"Learned": "levelhit"
 },
 {
@@ -805,7 +790,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 4,
 	"Learned": "levelhit"
@@ -832,7 +817,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 4,
 	"Learned": "levelhit"
@@ -864,7 +849,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 4,
 	"Learned": "levelhit"
@@ -901,7 +886,7 @@ null,
 			"Amount": 1
 		}],
 	"Discipline": 4,
-	"Category": ["Recipes"],
+	"Category": ["Dishes"],
 	"XP": 1,
 	"LevelReq": 4,
 	"Learned": "levelhit"
@@ -1044,6 +1029,322 @@ null,
 	"Category": ["Brewing"],
 	"XP": 30,
 	"LevelReq": 10,
+	"Learned": "levelhit"
+},
+{
+	"ID": 39,
+	"Name": "Pickles",
+	"IconIndex": 228,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 117,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 253,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 252,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 1,
+	"LevelReq": 4,
+	"Learned": "levelhit"
+},
+{
+	"ID": 40,
+	"Name": "Burger",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 119,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 93,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 254,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 1,
+	"LevelReq": 5,
+	"Learned": "levelhit"
+},
+{
+	"ID": 41,
+	"Name": "Super Burger",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 120,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 93,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 254,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 34,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 258,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 40,
+	"LevelReq": 10,
+	"Learned": "levelhit"
+},
+{
+	"ID": 42,
+	"Name": "Dough",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 259,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 232,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 43,
+	"Name": "Supreme Burger",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 121,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 93,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 254,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 34,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 258,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 117,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 231,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 35,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 40,
+	"LevelReq": 10,
+	"Learned": "levelhit"
+},
+{
+	"ID": 44,
+	"Name": "Burger X",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 122,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 121,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 108,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 1000,
+	"LevelReq": 50,
+	"Learned": "levelhit"
+},
+{
+	"ID": 45,
+	"Name": "Grilled Cheese",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 131,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 34,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 260,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 46,
+	"Name": "Chicken Pot Pie",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 128,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 115,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 259,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 107,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 108,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
 	"Learned": "levelhit"
 }
 ]
