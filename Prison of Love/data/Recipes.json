@@ -18,7 +18,7 @@ null,
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],
-	"XP": 1,
+	"XP": 2,
 	"LevelReq": 1,
 	"Learned": "start"
 },
@@ -40,7 +40,7 @@ null,
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],
-	"XP": 1,
+	"XP": 2,
 	"LevelReq": 1,
 	"Learned": "start"
 },
@@ -67,9 +67,9 @@ null,
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],
-	"XP": 4,
+	"XP": 5,
 	"LevelReq": 2,
-	"Learned": "levelhit"
+	"Learned": "start"
 },
 {
 	"ID": 4,
@@ -89,7 +89,7 @@ null,
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],
-	"XP": 1,
+	"XP": 10,
 	"LevelReq": 7,
 	"Learned": "start"
 },
@@ -1346,5 +1346,27 @@ null,
 	"XP": 5,
 	"LevelReq": 2,
 	"Learned": "levelhit"
+},
+{
+	"ID": 47,
+	"Name": "Bronze Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 51,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 7,
+	"LevelReq": 4,
+	"Learned": "start"
 }
 ]
