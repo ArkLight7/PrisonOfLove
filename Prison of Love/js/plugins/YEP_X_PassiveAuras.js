@@ -8,11 +8,11 @@ Imported.YEP_X_PassiveAuras = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Aura = Yanfly.Aura || {};
-Yanfly.Aura.version = 1.05;
+Yanfly.Aura.version = 1.08;
 
 //=============================================================================
  /*:
- * @plugindesc v1.05 (Requires YEP_AutoPassiveStates.js) Add aura effects
+ * @plugindesc v1.08 (Requires YEP_AutoPassiveStates.js) Add aura effects
  * to various database objects.
  * @author Yanfly Engine Plugins
  *
@@ -180,6 +180,14 @@ Yanfly.Aura.version = 1.05;
  * Changelog
  * ============================================================================
  *
+ * Version 1.08:
+ * - Optimization update. There should be less lag spikes if there are more
+ * passive conditions present on a battler.
+ *
+ * Version 1.07:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
+ *
  * Version 1.06:
  * - Updated for RPG Maker MV version 1.6.1.
  *
@@ -269,6 +277,9 @@ DataManager.processAuraNotetags1 = function(group) {
         obj.auraConditionEval = obj.auraConditionEval + line + '\n';
       }
     }
+
+    obj.auraConditionEval = new Function('condition','a','user','subject','b',
+      'target','s','v', obj.auraConditionEval + '\nreturn condition;');
   }
 };
 
@@ -486,7 +497,8 @@ Game_BattlerBase.prototype.auraStateConditionEval = function(state) {
   var v = $gameVariables._data;
   var code = state.auraConditionEval;
   try {
-      eval(code);
+      condition = state.auraConditionEval.call(this, condition, a, user,
+        subject, b, target, s, v);
     } catch (e) {
       Yanfly.Util.displayError(e, code, 'PASSIVE AURA CUSTOM CONDITION ERROR');
     }
@@ -610,6 +622,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

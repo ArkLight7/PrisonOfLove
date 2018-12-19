@@ -8,11 +8,11 @@ Imported.YEP_JobPoints = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.JP = Yanfly.JP || {};
-Yanfly.JP.version = 1.09;
+Yanfly.JP.version = 1.10;
 
 //=============================================================================
  /*:
- * @plugindesc v1.09 This plugin by itself doesn't do much, but it enables
+ * @plugindesc v1.10 This plugin by itself doesn't do much, but it enables
  * actors to acquire JP (job points) used for other plugins.
  * @author Yanfly Engine Plugins
  *
@@ -222,6 +222,10 @@ Yanfly.JP.version = 1.09;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.10:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.09:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -792,6 +796,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();
