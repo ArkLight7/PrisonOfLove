@@ -8,11 +8,11 @@ Imported.YEP_BattleEngineCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.BEC = Yanfly.BEC || {};
-Yanfly.BEC.version = 1.46;
+Yanfly.BEC.version = 1.49;
 
 //=============================================================================
  /*:
- * @plugindesc v1.46 Have more control over the flow of the battle system
+ * @plugindesc v1.49 Have more control over the flow of the battle system
  * with this plugin and alter various aspects to your liking.
  * @author Yanfly Engine Plugins
  *
@@ -882,6 +882,16 @@ Yanfly.BEC.version = 1.46;
  * Changelog
  * ============================================================================
  *
+ * Version 1.49:
+ * - Added failsafe for 'furthestRight()' errors.
+ *
+ * Version 1.48:
+ * - Optimization update.
+ *
+ * Version 1.47:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
+ *
  * Version 1.46:
  * - Updated for RPG Maker MV version 1.6.1.
  *
@@ -1239,6 +1249,7 @@ Yanfly.Param.BECShowEnemyName = eval(Yanfly.Param.BECShowEnemyName);
 Yanfly.Param.BECShowSelectBox = String(Yanfly.Parameters['Show Select Box']);
 Yanfly.Param.BECShowSelectBox = eval(Yanfly.Param.BECShowSelectBox);
 Yanfly.Param.BECEnemyAutoSel = String(Yanfly.Parameters['Enemy Auto Select']);
+Yanfly.Param.BECEnemyAutoSel = Yanfly.Param.BECEnemyAutoSel;
 Yanfly.Param.BECCommandAlign = String(Yanfly.Parameters['Command Alignment']);
 Yanfly.Param.BECCommandRows = Number(Yanfly.Parameters['Command Window Rows']);
 Yanfly.Param.BECAniBaseDel = Number(Yanfly.Parameters['Animation Base Delay']);
@@ -3305,6 +3316,14 @@ Sprite_Damage.prototype.setupCriticalEffect = function() {
     this._flashDuration = Yanfly.Param.BECCritDur;
 };
 
+Yanfly.BEC.Sprite_Damage_update = Sprite_Damage.prototype.update;
+Sprite_Damage.prototype.update = function() {
+    Yanfly.BEC.Sprite_Damage_update.call(this);
+    if (this._duration <= 0 && this.parent) {
+        this.parent.removeChild(this);
+    }
+};
+
 //=============================================================================
 // Sprite_StateIcon
 //=============================================================================
@@ -4823,13 +4842,30 @@ Window_BattleActor.prototype.autoSelect = function() {
     if (!action) return;
     this._inputLock = false;
     this._selectDead = false;
+    this.setCursorAll(false);
     if (action.isForUser()) {
       this.select(BattleManager.actor().index());
       this._inputLock = true;
+    } else if (action.isForAll()) {
+      this._inputLock = true;
+      this.setCursorAll(true);
     } else if (action.isForDeadFriend()) {
       this._selectDead = true;
       this.autoSelectFirstDeadActor();
-      if (action.isForAll()) this._inputLock = true;
+    }
+    this.updateCursor();
+};
+
+Window_BattleActor.prototype.updateCursor = function() {
+    if (this._cursorAll) {
+        var allRowsHeight = this.maxRows() * this.itemHeight();
+        this.setCursorRect(0, 0, this.contents.width, allRowsHeight);
+        this.setTopRow(0);
+    } else if (this.isCursorVisible()) {
+        var rect = this.itemRect(this.index());
+        this.setCursorRect(rect.x, rect.y, rect.width, rect.height);
+    } else {
+        this.setCursorRect(0, 0, 0, 0);
     }
 };
 
@@ -4988,7 +5024,7 @@ Window_BattleEnemy.prototype.refresh = function() {
 
 Window_BattleEnemy.prototype.sortTargets = function() {
     this._enemies.sort(function(a, b) {
-        if (a.spritePosX() == b.spritePosX()) {
+        if (a.spritePosX() === b.spritePosX()) {
           return a.spritePosY() - b.spritePosY();
         }
         return a.spritePosX() - b.spritePosX();
@@ -4996,7 +5032,12 @@ Window_BattleEnemy.prototype.sortTargets = function() {
 };
 
 Window_BattleEnemy.prototype.autoSelect = function() {
-    var selectIndex = eval(Yanfly.Param.BECEnemyAutoSel);
+    if (Yanfly.Param.BECEnemyAutoSel === 0 ||
+    Yanfly.Param.BECEnemyAutoSel === '0') {
+      var selectIndex = 0;
+    } else {
+      var selectIndex = this.furthestRight();
+    }
     this.select(selectIndex);
 };
 
@@ -5604,6 +5645,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();
