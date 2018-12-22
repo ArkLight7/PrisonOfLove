@@ -1113,22 +1113,7 @@ null,
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 93,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 254,
+			"ID": 120,
 			"Amount": 1
 		},
 		{
@@ -1192,32 +1177,7 @@ null,
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 93,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 254,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 258,
+			"ID": 120,
 			"Amount": 1
 		},
 		{
@@ -1238,8 +1198,8 @@ null,
 	"Discipline": 4,
 	"Category": ["Dishes"],
 	"XP": 40,
-	"LevelReq": 10,
-	"Learned": "levelhit"
+	"LevelReq": 1,
+	"Learned": "start"
 },
 {
 	"ID": 44,
@@ -1328,12 +1288,7 @@ null,
 		},
 		{
 			"Type": "item",
-			"ID": 107,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 108,
+			"ID": 132,
 			"Amount": 1
 		},
 		{
@@ -1368,5 +1323,408 @@ null,
 	"XP": 7,
 	"LevelReq": 4,
 	"Learned": "start"
+},
+{
+	"ID": 48,
+	"Name": "Bronze Battleaxe",
+	"IconIndex": 99,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 2,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 90,
+			"Amount": 1
+		}],
+	"Discipline": 2,
+	"Category": ["Weapons"],
+	"XP": 22,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 49,
+	"Name": "Cloth Wraps",
+	"IconIndex": 106,
+	"Result": 
+		[{
+			"Type": "weapon",
+			"ID": 8,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 85,
+			"Amount": 2
+		}],
+	"Discipline": 6,
+	"Category": ["Weapons"],
+	"XP": 22,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 50,
+	"Name": "Roast Chicken",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 128,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 115,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 108,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 51,
+	"Name": "Veggie Medley",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 132,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 107,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 108,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 231,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 52,
+	"Name": "Coffee",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 127,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 257,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Drinks"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 53,
+	"Name": "Cheesy Garlic Bread",
+	"IconIndex": 266,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 129,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 230,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 34,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 260,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 54,
+	"Name": "Grilled Cheese",
+	"IconIndex": 266,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 129,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 37,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 34,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 260,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 55,
+	"Name": "Honey Tea",
+	"IconIndex": 226,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 125,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 255,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 208,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Drinks"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 56,
+	"Name": "Blackberry Tea",
+	"IconIndex": 226,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 126,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 255,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 251,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Drinks"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 57,
+	"Name": "Chai Tea",
+	"IconIndex": 226,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 124,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 255,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 229,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 256,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Drinks"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 58,
+	"Name": "Bronze Shield",
+	"IconIndex": 128,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 1,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 88,
+			"Amount": 3
+		}],
+	"Discipline": 2,
+	"Category": ["Armors"],
+	"XP": 20,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 59,
+	"Name": "Copper Ring",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 4,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 67,
+			"Amount": 1
+		}],
+	"Discipline": 8,
+	"Category": ["Accessories"],
+	"XP": 5,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 60,
+	"Name": "Gold Ring",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 6,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 68,
+			"Amount": 1
+		}],
+	"Discipline": 8,
+	"Category": ["Accessories"],
+	"XP": 50,
+	"LevelReq": 20,
+	"Learned": "levelhit"
+},
+{
+	"ID": 61,
+	"Name": "Silver Ring",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 29,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 72,
+			"Amount": 1
+		}],
+	"Discipline": 8,
+	"Category": ["Accessories"],
+	"XP": 50,
+	"LevelReq": 10,
+	"Learned": "levelhit"
 }
 ]

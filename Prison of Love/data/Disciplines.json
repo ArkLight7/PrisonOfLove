@@ -51,7 +51,7 @@ null,
 	"IconID": 291,
 	"ExpFormula": "50 + 25 * level",
 	"MaxLevel": 150,
-	"Categories": ["Items", "Armor"],
+	"Categories": ["Items", "Armor", "Weapons"],
 	"Background": "Blackness"
 },
 {
@@ -61,6 +61,15 @@ null,
 	"ExpFormula": "50 + 25 * level",
 	"MaxLevel": 150,
 	"Categories": ["Items", "Weapons"],
+	"Background": "Blackness"
+},
+{
+	"ID": 8,
+	"Name": "Accessory Crafting",
+	"IconID": 295,
+	"ExpFormula": "50 + 25 * level",
+	"MaxLevel": 150,
+	"Categories": ["Accessories"],
 	"Background": "Blackness"
 }
 ]
