@@ -1726,5 +1726,192 @@ null,
 	"XP": 50,
 	"LevelReq": 10,
 	"Learned": "levelhit"
+},
+{
+	"ID": 62,
+	"Name": "Raw Sausage",
+	"IconIndex": 272,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 133,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 110,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 63,
+	"Name": "Stock",
+	"IconIndex": 228,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 134,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 94,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 93,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 231,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 107,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 64,
+	"Name": "Gravy",
+	"IconIndex": 228,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 135,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 134,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 232,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 65,
+	"Name": "Peanut Butter",
+	"IconIndex": 228,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 265,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 136,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 264,
+			"Amount": 10
+		},
+		{
+			"Type": "item",
+			"ID": 227,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Prepare"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 66,
+	"Name": "Omelette",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 137,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 266,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 263,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 231,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 136,
+			"Amount": 1
+		}],
+	"Discipline": 4,
+	"Category": ["Dishes"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
+},
+{
+	"ID": 67,
+	"Name": "Iron Arrow",
+	"IconIndex": 274,
+	"Result": 
+		[{
+			"Type": "armor",
+			"ID": 12,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 66,
+			"Amount": 1
+		},
+		{
+			"Type": "item",
+			"ID": 96,
+			"Amount": 1
+		}],
+	"Discipline": 7,
+	"Category": ["Weapons"],
+	"XP": 5,
+	"LevelReq": 2,
+	"Learned": "levelhit"
 }
 ]
