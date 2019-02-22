@@ -404,7 +404,7 @@ Snow.Gather.Gather = function(requireItem, recievableItems, commonEvent, event) 
 			var gen = Snow.Gather.Round(Snow.Gather.RandomInt(), 2);
 			for (var j = 0; j < hand.harvestChance.length; j++) {
 				if (hand.harvestChance[j].itemId == itemisedRecievableItems[i].id) {
-					if (gen <= hand.chaceHarvest[j].harvestChance) {
+					if (gen <= hand.chanceHarvest[j].harvestChance) {
 						var itemGathered = Snow.Gather.RandomIntRange(itemisedRecievableItems[i].harvestMinimum, itemisedRecievableItems[i].harvestMaximum);
 						$gameParty.gainItem(itemisedRecievableItems[i], itemGathered);
 						if (MVC.Boolean(String(Snow.Gather.Parameters["Last Result Store"]))) {
