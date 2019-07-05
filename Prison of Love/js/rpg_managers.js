@@ -1,5 +1,5 @@
 //=============================================================================
-// rpg_managers.js v1.6.0
+// rpg_managers.js v1.6.2
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -882,7 +882,7 @@ ImageManager.loadNormalBitmap = function(path, hue) {
     var key = this._generateCacheKey(path, hue);
     var bitmap = this._imageCache.get(key);
     if (!bitmap) {
-        bitmap = Bitmap.load(path);
+        bitmap = Bitmap.load(decodeURIComponent(path));
         bitmap.addLoadListener(function() {
             bitmap.rotateHue(hue);
         });
@@ -1937,11 +1937,6 @@ SceneManager.onKeyDown = function(event) {
         case 119:   // F8
             if (Utils.isNwjs() && Utils.isOptionValid('test')) {
                 require('nw.gui').Window.get().showDevTools();
-            }
-            break;
-	case 123: //F12
-            if (Utils.isNwjs()) {
-                event.preventDefault();
             }
             break;
         }
