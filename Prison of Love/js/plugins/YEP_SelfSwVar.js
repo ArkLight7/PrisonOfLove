@@ -8,11 +8,11 @@ Imported.YEP_SelfSwVar = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.SSV = Yanfly.SSV || {};
-Yanfly.SSV.version = 1.03;
+Yanfly.SSV.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 Self Switches and Self Variables functionality
+ * @plugindesc v1.04 Self Switches and Self Variables functionality
  * without the need for plugin commands or script calls.
  * @author Yanfly Engine Plugins
  *
@@ -119,12 +119,12 @@ Yanfly.SSV.version = 1.03;
  *
  * Script Call:
  *
- *   this.setSelfSwitchValue(mapId, eventId, switchId)
+ *   this.getSelfSwitchValue(mapId, eventId, switchId)
  *   - Replace mapId with the map ID the event exists on. Replace eventId with
  *   the ID of the event. And replace the switchId with the ID of the switch.
  *   This will get the true/false value of that event's self switch.
  *
- *   this.setSelfVariableValue(mapId, eventId, varId)
+ *   this.getSelfVariableValue(mapId, eventId, varId)
  *   - Replace mapId with the map ID the event exists on. Replace eventId with
  *   the ID of the event. And replace the varId with the ID of the variable.
  *   This will get the value of that event's self variable.
@@ -143,6 +143,10 @@ Yanfly.SSV.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -629,6 +633,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

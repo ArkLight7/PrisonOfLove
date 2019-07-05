@@ -8,11 +8,11 @@ Imported.YEP_BuffsStatesCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.BSC = Yanfly.BSC || {};
-Yanfly.BSC.version = 1.15;
+Yanfly.BSC.version = 1.16;
 
 //=============================================================================
  /*:
- * @plugindesc v1.15 Alter the basic mechanics behind buffs and states
+ * @plugindesc v1.16 Alter the basic mechanics behind buffs and states
  * that aren't adjustable within the RPG Maker editor.
  * @author Yanfly Engine Plugins
  *
@@ -638,6 +638,10 @@ Yanfly.BSC.version = 1.15;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.16:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.15:
  * - Updated for RPG Maker MV version 1.6.1.
@@ -2185,6 +2189,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

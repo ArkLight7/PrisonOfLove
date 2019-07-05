@@ -8,11 +8,11 @@ Imported.YEP_LifeSteal = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.LS = Yanfly.LS || {};
-Yanfly.LS.version = 1.03;
+Yanfly.LS.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.02 Enables passive life steal traits without them being
+ * @plugindesc v1.04 Enables passive life steal traits without them being
  * active abilities but instead as passive traits.
  * @author Yanfly Engine Plugins
  *
@@ -243,6 +243,10 @@ Yanfly.LS.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -811,6 +815,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

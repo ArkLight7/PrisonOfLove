@@ -8,11 +8,11 @@ Imported.YEP_OptionsCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Options = Yanfly.Options || {};
-Yanfly.Options.version = 1.01;
+Yanfly.Options.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Expand the Options Menu into a more elegant looking menu
+ * @plugindesc v1.02 Expand the Options Menu into a more elegant looking menu
  * with more customization potential.
  * @author Yanfly Engine Plugins
  *
@@ -253,6 +253,10 @@ Yanfly.Options.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.01:
  * - Updated for Message Speed Options.
@@ -917,6 +921,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

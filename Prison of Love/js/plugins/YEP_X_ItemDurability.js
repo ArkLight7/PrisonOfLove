@@ -8,11 +8,11 @@ Imported.YEP_X_ItemDurability = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IDur = Yanfly.IDur || {};
-Yanfly.IDur.version = 1.03;
+Yanfly.IDur.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 (Requires YEP_ItemCore.js) Independent equipment
+ * @plugindesc v1.04 (Requires YEP_ItemCore.js) Independent equipment
  * now have durability, which when runs out, will break.
  * @author Yanfly Engine Plugins
  *
@@ -586,6 +586,10 @@ Yanfly.IDur.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ * 
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.5.0.

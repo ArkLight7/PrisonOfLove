@@ -30,6 +30,9 @@ Yanfly.WIB.version = 1.00;
  * for later in addition to a new action sequence for those using the Battle
  * Engine Core plugin.
  *
+ * If you are using YEP_BattleEngineCore.js, place this plugin underneath it
+ * in the Plugin Manager's plugin list.
+ *
  * ============================================================================
  * Plugin Commands
  * ============================================================================

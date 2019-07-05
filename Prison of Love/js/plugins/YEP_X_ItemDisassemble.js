@@ -8,11 +8,11 @@ Imported.YEP_X_ItemDisassemble = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IDA = Yanfly.IDA || {};
-Yanfly.IDA.version = 1.05;
+Yanfly.IDA.version = 1.06;
 
 //=============================================================================
  /*:
- * @plugindesc v1.05 (Requires YEP_ItemCore.js) Grants the option to
+ * @plugindesc v1.06 (Requires YEP_ItemCore.js) Grants the option to
  * break down items in the item menu into other items.
  * @author Yanfly Engine Plugins
  *
@@ -316,6 +316,10 @@ Yanfly.IDA.version = 1.05;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.06:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.05:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1170,6 +1174,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

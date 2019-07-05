@@ -8,11 +8,11 @@ Imported.YEP_X_CounterControl = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Counter = Yanfly.Counter || {};
-Yanfly.Counter.version = 1.08;
+Yanfly.Counter.version = 1.10;
 
 //=============================================================================
  /*:
- * @plugindesc v1.08 (Requires YEP_BattleEngineCore.js) Gives you more
+ * @plugindesc v1.10 (Requires YEP_BattleEngineCore.js) Gives you more
  * control over how counters work in RPG Maker MV!
  * @author Yanfly Engine Plugins
  *
@@ -701,6 +701,13 @@ Yanfly.Counter.version = 1.08;
  * Changelog
  * ============================================================================
  *
+ * Version 1.10:
+ * - Fixed a bug that caused "Counter Hit" to not work properly.
+ *
+ * Version 1.09:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
+ *
  * Version 1.08:
  * - Updated for RPG Maker MV version 1.5.0.
  *
@@ -1162,7 +1169,7 @@ BattleManager.checkCounterLine = function(line, skill, subject, target) {
       return !this.checkCounterSingleTarget();
     // COUNTER HIT
     } else if (line.toUpperCase() === 'COUNTER HIT') {
-      return !this.checkCounterCounterHit();
+      return this.checkCounterCounterHit();
     // NOT COUNTER HIT
     } else if (line.toUpperCase() === 'NOT COUNTER HIT') {
       return !this.checkCounterCounterHit();
@@ -1973,6 +1980,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

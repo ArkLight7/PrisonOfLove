@@ -8,11 +8,11 @@ Imported.YEP_FloorDamage = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.FloorDmg = Yanfly.FloorDmg || {};
-Yanfly.FloorDmg.version = 1.01;
+Yanfly.FloorDmg.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Allows you to modify floor damage based on terrain tags.
+ * @plugindesc v1.02 Allows you to modify floor damage based on terrain tags.
  * You can also change the color of the flash when damaged, too.
  * @author Yanfly Engine Plugins
  *
@@ -83,6 +83,10 @@ Yanfly.FloorDmg.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -225,6 +229,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

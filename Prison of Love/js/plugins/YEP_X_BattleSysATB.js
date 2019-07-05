@@ -8,11 +8,11 @@ Imported.YEP_X_BattleSysATB = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.ATB = Yanfly.ATB || {};
-Yanfly.ATB.version = 1.27;
+Yanfly.ATB.version = 1.28;
 
 //=============================================================================
  /*:
- * @plugindesc v1.27 (Requires YEP_BattleEngineCore.js) Add ATB (Active
+ * @plugindesc v1.28 (Requires YEP_BattleEngineCore.js) Add ATB (Active
  * Turn Battle) into your game using this plugin!
  * @author Yanfly Engine Plugins
  *
@@ -632,6 +632,10 @@ Yanfly.ATB.version = 1.27;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.28:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.27:
  * - Compatibility update with YEP_OptionsCore.js.
@@ -2533,6 +2537,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

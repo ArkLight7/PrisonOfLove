@@ -8,11 +8,11 @@ Imported.YEP_ExtraEnemyDrops = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EED = Yanfly.EED || {};
-Yanfly.EED.version = 1.08;
+Yanfly.EED.version = 1.09;
 
 //=============================================================================
  /*:
- * @plugindesc v1.08 Allows your enemies to drop more than just three
+ * @plugindesc v1.09 Allows your enemies to drop more than just three
  * items as per the editor's limit.
  * @author Yanfly Engine Plugins
  *
@@ -356,6 +356,10 @@ Yanfly.EED.version = 1.08;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.09:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.08:
  * - Plugin compatibility update with Element Core to count multiple elemental
@@ -1143,6 +1147,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

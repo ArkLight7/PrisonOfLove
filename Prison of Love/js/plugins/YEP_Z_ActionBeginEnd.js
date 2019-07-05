@@ -8,11 +8,11 @@ Imported.YEP_Z_ActionBeginEnd = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.LunActBegEnd = Yanfly.LunActBegEnd || {};
-Yanfly.LunActBegEnd.version = 1.00;
+Yanfly.LunActBegEnd.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 (Lunatic Pack) Add additional effects that occur at the
+ * @plugindesc v1.01 (Lunatic Pack) Add additional effects that occur at the
  * beginning or end of an action.
  * @author Yanfly Engine Plugins
  *
@@ -258,6 +258,10 @@ Yanfly.LunActBegEnd.version = 1.00;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.01:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.00:
  * - Finished Plugin!

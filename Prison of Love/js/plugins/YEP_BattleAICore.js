@@ -8,11 +8,11 @@ Imported.YEP_BattleAICore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.CoreAI = Yanfly.CoreAI || {};
-Yanfly.CoreAI.version = 1.13;
+Yanfly.CoreAI.version = 1.15;
 
 //=============================================================================
  /*:
- * @plugindesc v1.13 This plugin allows you to structure battle A.I.
+ * @plugindesc v1.15 This plugin allows you to structure battle A.I.
  * patterns with more control.
  * @author Yanfly Engine Plugins
  *
@@ -442,6 +442,13 @@ Yanfly.CoreAI.version = 1.13;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.15:
+ * - Fixed a bug that caused some TP conditions to not work properly.
+ *
+ * Version 1.14:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.13:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1151,7 +1158,7 @@ AIManager.setHighestMaxTpTarget = function(group, id) {
     var maintarget = group[Math.floor(Math.random() * group.length)];
     for (var i = 0; i < group.length; ++i) {
       var target = group[i];
-      if (target.level > maintarget.maxTp()) maintarget = target;
+      if (target.tp > maintarget.maxTp()) maintarget = target;
     }
     this.action().setTarget(maintarget.index())
 };
@@ -1160,7 +1167,7 @@ AIManager.setLowestMaxTpTarget = function(group, id) {
     var maintarget = group[Math.floor(Math.random() * group.length)];
     for (var i = 0; i < group.length; ++i) {
       var target = group[i];
-      if (target.level < maintarget.maxTp()) maintarget = target;
+      if (target.tp < maintarget.maxTp()) maintarget = target;
     }
     this.action().setTarget(maintarget.index())
 };
@@ -1169,7 +1176,7 @@ AIManager.setHighestTpTarget = function(group, id) {
     var maintarget = group[Math.floor(Math.random() * group.length)];
     for (var i = 0; i < group.length; ++i) {
       var target = group[i];
-      if (target.level > maintarget.tp) maintarget = target;
+      if (target.tp > maintarget.tp) maintarget = target;
     }
     this.action().setTarget(maintarget.index())
 };
@@ -1178,7 +1185,7 @@ AIManager.setLowestTpTarget = function(group, id) {
     var maintarget = group[Math.floor(Math.random() * group.length)];
     for (var i = 0; i < group.length; ++i) {
       var target = group[i];
-      if (target.level < maintarget.tp) maintarget = target;
+      if (target.tp < maintarget.tp) maintarget = target;
     }
     this.action().setTarget(maintarget.index())
 };
@@ -1660,6 +1667,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

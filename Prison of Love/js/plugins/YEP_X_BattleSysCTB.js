@@ -8,11 +8,11 @@ Imported.YEP_X_BattleSysCTB = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.CTB = Yanfly.CTB || {};
-Yanfly.CTB.version = 1.16;
+Yanfly.CTB.version = 1.17;
 
 //=============================================================================
  /*:
- * @plugindesc v1.16 (Requires YEP_BattleEngineCore.js) Add CTB (Charge
+ * @plugindesc v1.17 (Requires YEP_BattleEngineCore.js) Add CTB (Charge
  * Turn Battle) into your game using this plugin!
  * @author Yanfly Engine Plugins
  *
@@ -459,6 +459,10 @@ Yanfly.CTB.version = 1.16;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.17:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.16:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -2669,6 +2673,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

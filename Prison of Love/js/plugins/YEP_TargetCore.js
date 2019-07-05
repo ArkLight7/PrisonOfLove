@@ -8,11 +8,11 @@ Imported.YEP_TargetCore = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Target = Yanfly.Target || {};
-Yanfly.Target.version = 1.04;
+Yanfly.Target.version = 1.05;
 
 //=============================================================================
  /*:
- * @plugindesc v1.04 Expand the target scope from RPG Maker's default
+ * @plugindesc v1.05 Expand the target scope from RPG Maker's default
  * limitations for better target control.
  * @author Yanfly Engine Plugins
  *
@@ -251,6 +251,10 @@ Yanfly.Target.version = 1.04;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.05:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.04:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1054,6 +1058,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

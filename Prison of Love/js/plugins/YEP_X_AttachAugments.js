@@ -8,11 +8,11 @@ Imported.YEP_X_AttachAugments = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Augment = Yanfly.Augment || {};
-Yanfly.Augment.version = 1.10;
+Yanfly.Augment.version = 1.11;
 
 //=============================================================================
  /*:
- * @plugindesc v1.10 (Requires YEP_ItemCore.js) Players can attach and
+ * @plugindesc v1.11 (Requires YEP_ItemCore.js) Players can attach and
  * detach augments to independent equipment.
  * @author Yanfly Engine Plugins
  *
@@ -432,6 +432,10 @@ Yanfly.Augment.version = 1.10;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.11:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.10:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1726,6 +1730,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

@@ -8,11 +8,11 @@ Imported.YEP_X_SelectionControl = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Sel = Yanfly.Sel || {};
-Yanfly.Sel.version = 1.14;
+Yanfly.Sel.version = 1.15;
 
 //=============================================================================
  /*:
- * @plugindesc v1.14 (Requires YEP_BattleEngineCore & YEP_TargetCore.js)
+ * @plugindesc v1.15 (Requires YEP_BattleEngineCore & YEP_TargetCore.js)
  * Control what targets can and can't be selected for actions.
  * @author Yanfly Engine Plugins
  *
@@ -419,6 +419,10 @@ Yanfly.Sel.version = 1.14;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.15:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.14:
  * - Updated for RPG Maker MV version 1.6.1.
@@ -1549,11 +1553,6 @@ Window_BattleEnemy.prototype.allowedTargets = function() {
 
 Window_BattleEnemy.prototype.sortTargets = function() {
     this._enemies.sort(function(a, b) {
-      /*
-      if (a.isActor() && b.isActor()) {
-        return a.index() - b.index();
-      }
-      */
       if (a.spritePosX() === b.spritePosX()) {
         return a.spritePosY() - b.spritePosY();
       }

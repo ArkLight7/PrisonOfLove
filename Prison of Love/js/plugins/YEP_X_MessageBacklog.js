@@ -413,7 +413,7 @@ Game_System.prototype.isMessageBacklogLoggingEnabled = function() {
   if (this._messageBacklogLoggingEnable === undefined) {
     this.initMessageBacklog();
   }
-  return this._messageBacklogKeyEnable;
+  return this._messageBacklogLoggingEnable;
 };
 
 Game_System.prototype.setMessageBacklogLoggingEnable = function(value) {

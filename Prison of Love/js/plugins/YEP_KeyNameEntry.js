@@ -1,5 +1,5 @@
 //=============================================================================
-// Yanfly Engine Plugins - Key Name Entry (American QWERTY English Keyboard)
+// Yanfly Engine Plugins - Key Name Entry
 // YEP_KeyNameEntry.js
 //=============================================================================
 
@@ -7,33 +7,52 @@ var Imported = Imported || {};
 Imported.YEP_KeyNameEntry = true;
 
 var Yanfly = Yanfly || {};
-Yanfly.KNE = Yanfly.KNE || {};
+Yanfly.KeyNameEntry = Yanfly.KeyNameEntry || {};
+Yanfly.KeyNameEntry.version = 1.00;
 
 //=============================================================================
  /*:
- * @plugindesc vWIP Allows the Name Input Processing event to function
+ * @plugindesc v1.00 Allows the Name Input Processing event to function
  * with the keyboard keys to enter in letters and numbers.
  * @author Yanfly Engine Plugins
- *
- * @param QWERTY Layout
- * @desc Set the visible on-screen keyboard to the QWERTY layout?
- * @default true
  *
  * @help
  * ============================================================================
  * Introduction
  * ============================================================================
  *
- * Allows you to use the keyboard to perform name entry on the Name Input
- * Processing Event. This is made specifically for American English keyboards
- * using the QWERTY format.
+ * Pressing characters one by one for Name Input can be slow and tedious. This
+ * plugin allows you to use the keyboard to perform name entry on the Name Input
+ * Processing Event. There, players will have full range of their keyboard to
+ * enter in character names. If they prefer the manual input, they can click
+ * the mouse or press arrow keys on the keyboard to immediately switch the name
+ * entry to manual letter entry as well.
  *
  * ============================================================================
  * Changelog
  * ============================================================================
  *
- * Version BETA:
- * - Started Plugin!
+ * Version 1.00:
+ * - Finished Plugin!
+ *
+ * ============================================================================
+ * End of Helpfile
+ * ============================================================================
+ *
+ * @param KeyboardMsg
+ * @text Keyboard Message
+ * @type note
+ * @desc The message displayed when allowing keyboard entry.
+ * You may use text codes here.
+ * @default "Type in this character's name.\nPress \\c[6]ENTER\\c[0] when you're done.\n\n-or-\n\nPress the \\c[6]arrow keys\\c[0] to switch\nto manual character entry.\nPress \\c[6]ESC\\c[0] to use to keyboard."
+ *
+ * @param QWERTY Layout
+ * @type boolean
+ * @on YES
+ * @off NO
+ * @desc Set the visible on-screen keyboard to the QWERTY layout?
+ * @default true
+ *
  */
 //=============================================================================
 
@@ -44,189 +63,230 @@ Yanfly.KNE = Yanfly.KNE || {};
 Yanfly.Parameters = PluginManager.parameters('YEP_KeyNameEntry');
 Yanfly.Param = Yanfly.Param || {};
 
-Yanfly.Param.KNEQwertyLayout = String(Yanfly.Parameters['QWERTY Layout']);
-Yanfly.Param.KNEQwertyLayout = eval(Yanfly.Param.KNEQwertyLayout);
+Yanfly.Param.KNEMsg = JSON.parse(Yanfly.Parameters['KeyboardMsg']).split('\n');
+Yanfly.Param.KNEQwerty = eval(Yanfly.Parameters['QWERTY Layout']);
 
-if (Yanfly.Param.KNEQwertyLayout) {
+if (Yanfly.Param.KNEQwerty) {
   Window_NameInput.LATIN1 =
-   ['1','2','3','4','5',  '6','7','8','9','0',
-    'Q','W','E','R','T',  'Y','U','I','O','P',
+   ['Q','W','E','R','T',  'Y','U','I','O','P',
     'A','S','D','F','G',  'H','J','K','L',"'",
     '`','Z','X','C','V',  'B','N','M',',','.',
     'q','w','e','r','t',  'y','u','i','o','p',
     'a','s','d','f','g',  'h','j','k','l',':',
     '~','z','x','c','v',  'b','n','m','"',';',
+    '1','2','3','4','5',  '6','7','8','9','0',
     '!','@','#','$','%',  '^','&','*','(',')',
-    '<','>','[',']',' ',  ' ',' ',' ','Page','OK'];
+    '<','>','[',']','-',  '_','/',' ','Page','OK'];
 };
 
-Yanfly.KNE.KeyboardSettingsAmericanEnglish = {
-    8: 'backspace',
-   13: 'enter',
-   16: 'shift',
-   32: 'space',
-   46: 'delete',
+//===========================================================================
+// Input
+//===========================================================================
 
-  192: '`',
-   48: '0', 49: '1', 50: '2', 51: '3', 52: '4', 53: '5',
-   54: '6', 55: '7', 56: '8', 57: '9', 189: '-', 188: '=',
-   65: 'a', 66: 'b', 67: 'c', 68: 'd', 69: 'e', 70: 'f', 71: 'g', 72: 'h',
-   73: 'i', 74: 'j', 75: 'k', 76: 'l', 77: 'm', 78: 'n', 79: 'o', 80: 'p',
-   81: 'q', 82: 'r', 83: 's', 84: 't', 85: 'u', 86: 'v', 87: 'w', 88: 'x',
-   89: 'y', 90: 'z',
-   219: '[', 220: '\\', 221: ']', 186: ';', 222: "'", 188: '<', 190: '>',
-   191: '/'
+Yanfly.KeyNameEntry.Input_clear = Input.clear;
+Input.clear = function() {
+  Yanfly.KeyNameEntry.Input_clear.call(this);
+  this._inputString = undefined;
+  this._inputSpecialKeyCode = undefined;
 };
 
-Yanfly.KNE.CheckKeysAmericanEnglish = [
-  'backspace', 'enter', 'shift', 'space', 'delete', '`', '[', '\\', ']',
-  ';', "'", '<', '>', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-  'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g',
-  'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'
-];
-
-//=============================================================================
-// Scene_Name
-//=============================================================================
-
-Yanfly.KNE.Scene_Name_create = Scene_Name.prototype.create;
-Scene_Name.prototype.create = function() {
-  Yanfly.KNE.Scene_Name_create.call(this);
-  this.savePreviousKeyboardSettings();
-  this.setupKeyboard();
+Yanfly.KeyNameEntry.Input_setupEventHandlers = Input._setupEventHandlers;
+Input._setupEventHandlers = function() {
+  Yanfly.KeyNameEntry.Input_setupEventHandlers.call(this);
+  document.addEventListener('keypress', this._onKeyPress.bind(this));
 };
 
-Scene_Name.prototype.savePreviousKeyboardSettings = function() {
-  this._savedKeyboardSettings = JsonEx.makeDeepCopy(Input.keyMapper);
+Yanfly.KeyNameEntry.Input_onKeyDown = Input._onKeyDown;
+Input._onKeyDown = function(event) {
+  this._inputSpecialKeyCode = event.keyCode;
+  Yanfly.KeyNameEntry.Input_onKeyDown.call(this, event);
 };
 
-Scene_Name.prototype.setupKeyboard = function() {
-  var setting = Yanfly.KNE.KeyboardSettingsAmericanEnglish;
-  for (key in setting) {
-    Input.keyMapper[key] = setting[key];
+Input._onKeyPress = function(event) {
+  this._registerKeyInput(event);
+};
+
+Input._registerKeyInput = function(event) {
+  this._inputSpecialKeyCode = event.keyCode;
+  var character = String.fromCharCode(event.charCode);
+  if (this._inputString === undefined) {
+    this._inputString = character;
+  } else {
+    this._inputString += character;
   }
 };
 
-Yanfly.KNE.Scene_Name_onInputOk = Scene_Name.prototype.onInputOk;
-Scene_Name.prototype.onInputOk = function() {
-  Yanfly.KNE.Scene_Name_onInputOk.call(this);
-  this.restorePreviousKeyboardSettings();
+Yanfly.KeyNameEntry.Input_shouldPreventDefault = Input._shouldPreventDefault;
+Input._shouldPreventDefault = function(keyCode) {
+  if (keyCode === 8) return false;
+  return Yanfly.KeyNameEntry.Input_shouldPreventDefault.call(this, keyCode);
 };
 
-Scene_Name.prototype.restorePreviousKeyboardSettings = function() {
-  Input.keyMapper = this._savedKeyboardSettings;
-  this._savedKeyboardSettings = undefined;
+Input.isSpecialCode = function(key) {
+  if (key.match(/backspace/i)) return this._inputSpecialKeyCode === 8;
+  if (key.match(/enter/i)) return this._inputSpecialKeyCode === 13;
+  if (key.match(/escape/i)) return this._inputSpecialKeyCode === 27;
 };
 
-//=============================================================================
-// Window_NameEdit
-//=============================================================================
-
-Window_NameEdit.prototype.update = function() {
-  Window_Base.prototype.update.call(this);
-  this.updateBackspace();
+Input.isNumpadPressed = function() {
+  return [48, 49, 50, 51, 52, 
+          53, 54, 55, 56, 57].contains(this._inputSpecialKeyCode);
 };
 
-Window_NameEdit.prototype.updateBackspace = function() {
-  if (!this.isOpen()) return;
-  if (TouchInput.isRepeated() && this.isTouchedInsideFrame()) {
-    this.back();
-    SoundManager.playCancel();
-  };
+Input.isArrowPressed = function() {
+  return [37, 38, 39, 40].contains(this._inputSpecialKeyCode);
 };
 
-Window_NameEdit.prototype.isTouchedInsideFrame = function() {
-  var x = this.canvasToLocalX(TouchInput.x);
-  var y = this.canvasToLocalY(TouchInput.y);
-  return x >= 0 && y >= 0 && x < this.width && y < this.height;
-};
-
-//=============================================================================
+//===========================================================================
 // Window_NameInput
-//=============================================================================
+//===========================================================================
 
+Yanfly.KeyNameEntry.Window_NameInput_initialize =
+  Window_NameInput.prototype.initialize;
+Window_NameInput.prototype.initialize = function(editWindow) {
+  this._mode = 'keyboard';
+  Yanfly.KeyNameEntry.Window_NameInput_initialize.call(this, editWindow);
+  Input.clear();
+  this.select(-1);
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_processHandling =
+  Window_NameInput.prototype.processHandling;
 Window_NameInput.prototype.processHandling = function() {
   if (!this.isOpen()) return;
   if (!this.active) return;
-  if (Input.isRepeated('cancel')) {
+  if (Input.isSpecialCode('backspace')) {
+    Input.clear();
     this.processBack();
-  }
-  if (Input.isRepeated('ok')) {
-    this.processOk();
-  }
-  if (Input.isRepeated('backspace')) {
-    return this.processBack();
-  }
-  this.processKeyboardPress();
-};
-
-Window_NameInput.prototype.onTouch = function(triggered) {
-  var lastIndex = this.index();
-  var x = this.canvasToLocalX(TouchInput.x);
-  var y = this.canvasToLocalY(TouchInput.y);
-  var hitIndex = this.hitTest(x, y);
-  this.select(hitIndex);
-  if (triggered) this.processOk();
-};
-
-Window_NameInput.prototype.processKeyboardPress = function() {
-  for (var i = 0; i < Yanfly.KNE.CheckKeysAmericanEnglish.length; ++i) {
-    var key = Yanfly.KNE.CheckKeysAmericanEnglish[i];
-    if (Input.isTriggered(key)) {
-      this.processKeyboardPressedKey(key);
-    }
-  }
-};
-
-Window_NameInput.prototype.processKeyboardPressedKey = function(key) {
-  if (key === 'shift') return;
-  if (key === 'backspace') return this.processBack();
-  if (key === 'delete') return this.processBack();
-  if (key === 'space') return this.onNameAddCharacter(' ');
-  if (key === 'enter') {
-    if (this._index !== 89) {
-      this._index = 89;
-      SoundManager.playCursor();
-    } else {
-      this.onNameOk();
-    }
-    return;
-  }
-  var text = key;
-  if (Input.isPressed('shift')) text = text.toUpperCase();
-  if (key === '`' && Input.isPressed('shift')) text = '~';
-  if (key === '1' && Input.isPressed('shift')) text = '!';
-  if (key === '2' && Input.isPressed('shift')) text = '@';
-  if (key === '3' && Input.isPressed('shift')) text = '#';
-  if (key === '4' && Input.isPressed('shift')) text = '$';
-  if (key === '5' && Input.isPressed('shift')) text = '%';
-  if (key === '6' && Input.isPressed('shift')) text = '^';
-  if (key === '7' && Input.isPressed('shift')) text = '&';
-  if (key === '8' && Input.isPressed('shift')) text = '*';
-  if (key === '9' && Input.isPressed('shift')) text = '(';
-  if (key === '0' && Input.isPressed('shift')) text = ')';
-  if (key === '-' && Input.isPressed('shift')) text = '_';
-  if (key === '=' && Input.isPressed('shift')) text = '+';
-  if (key === '[' && Input.isPressed('shift')) text = '{';
-  if (key === ']' && Input.isPressed('shift')) text = '}';
-  if (key === '\\' && Input.isPressed('shift')) text = '|';
-  if (key === ';' && Input.isPressed('shift')) text = ':';
-  if (key === "'" && Input.isPressed('shift')) text = '"';
-  if (key === ',' && Input.isPressed('shift')) text = '<';
-  if (key === '.' && Input.isPressed('shift')) text = '>';
-  if (key === '/' && Input.isPressed('shift')) text = '?';
-  this.onNameAddCharacter(text);
-};
-
-Window_NameInput.prototype.onNameAddCharacter = function(text) {
-  if (this._editWindow.add(text)) {
-    SoundManager.playOk();
+  } else if (this._mode === 'keyboard') {
+    this.processKeyboardHandling();
+  } else if (Input.isSpecialCode('escape')) {
+    Input.clear();
+    this.switchModes('keyboard');
   } else {
-    SoundManager.playBuzzer();
+    Yanfly.KeyNameEntry.Window_NameInput_processHandling.call(this);
+  }
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_processTouch = Window_NameInput.prototype.processTouch;
+Window_NameInput.prototype.processTouch = function() {
+  if (!this.isOpenAndActive()) return;
+  if (this._mode === 'keyboard') {
+    if (TouchInput.isTriggered() && this.isTouchedInsideFrame()) {
+      this.switchModes('default');
+    } else if (TouchInput.isCancelled()) {
+      this.switchModes('default');
+    }
+  } else {
+    Yanfly.KeyNameEntry.Window_NameInput_processTouch.call(this);
+  }
+};
+
+Window_NameInput.prototype.processKeyboardHandling = function() {
+  if (Input.isSpecialCode('enter')) {
+    this.onNameOk();
+  } else if (Input._inputString !== undefined) {
+    var text = Input._inputString;
+    var length = text.length;
+    for (var i = 0; i < length; ++i) {
+      if (this._editWindow.add(text[i])) {
+        SoundManager.playOk();
+      } else {
+        SoundManager.playBuzzer();
+      }
+    }
+    Input.clear();
+  }
+};
+
+Window_NameInput.prototype.switchModes = function(mode) {
+  var prevMode = this._mode;
+  this._mode = mode;
+  if (prevMode !== this._mode) {
+      this.refresh();
+      SoundManager.playOk();
+      if (this._mode === 'default') {
+        this.select(0);
+      } else {
+        this.select(-1);
+      }
+  }
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorDown =
+  Window_NameInput.prototype.cursorDown;
+Window_NameInput.prototype.cursorDown = function(wrap) {
+  if (this._mode === 'keyboard' && !Input.isArrowPressed()) return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorDown.call(this, wrap);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorUp =
+  Window_NameInput.prototype.cursorUp;
+Window_NameInput.prototype.cursorUp = function(wrap) {
+  if (this._mode === 'keyboard' && !Input.isArrowPressed()) return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorUp.call(this, wrap);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorRight =
+  Window_NameInput.prototype.cursorRight;
+Window_NameInput.prototype.cursorRight = function(wrap) {
+  if (this._mode === 'keyboard' && !Input.isArrowPressed()) return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorRight.call(this, wrap);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorLeft =
+  Window_NameInput.prototype.cursorLeft;
+Window_NameInput.prototype.cursorLeft = function(wrap) {
+  if (this._mode === 'keyboard' && !Input.isArrowPressed()) return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorLeft.call(this, wrap);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorPagedown =
+  Window_NameInput.prototype.cursorPagedown;
+Window_NameInput.prototype.cursorPagedown = function() {
+  if (this._mode === 'keyboard') return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorPagedown.call(this);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_cursorPageup =
+  Window_NameInput.prototype.cursorPageup;
+Window_NameInput.prototype.cursorPageup = function() {
+  if (this._mode === 'keyboard') return;
+  if (Input.isNumpadPressed()) return;
+  Yanfly.KeyNameEntry.Window_NameInput_cursorPageup.call(this);
+  this.switchModes('default');
+};
+
+Yanfly.KeyNameEntry.Window_NameInput_refresh = Window_NameInput.prototype.refresh;
+Window_NameInput.prototype.refresh = function() {
+  if (this._mode === 'keyboard') {
+    this.contents.clear();
+    this.resetTextColor();
+    var array = Yanfly.Param.KNEMsg;
+    var length = array.length;
+    var y = (this.contents.height - (length * this.lineHeight())) / 2;
+    for (var i = 0; i < length; ++i) {
+      var text = array[i];
+      var width = Window_ChoiceList.prototype.textWidthEx.call(this, text);
+      var x = Math.floor((this.contents.width - width) / 2);
+      this.drawTextEx(text, x, y);
+      y += this.lineHeight();
+    }
+  } else {
+    Yanfly.KeyNameEntry.Window_NameInput_refresh.call(this);
   }
 };
 
 //=============================================================================
 // End of File
 //=============================================================================
-

@@ -1,18 +1,18 @@
 //=============================================================================
 // Yanfly Engine Plugins - Event Proximity Activate
-// YEP_EventproxActivate.js
+// YEP_EventProxActivate.js
 //=============================================================================
 
 var Imported = Imported || {};
-Imported.YEP_EventproxActivate = true;
+Imported.YEP_EventProxActivate = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EvPrAc = Yanfly.EvPrAc || {};
-Yanfly.EvPrAc.version = 1.00;
+Yanfly.EvPrAc.version = 1.01;
 
 //=============================================================================
  /*:
- * @plugindesc v1.00 Allows events to activate by being in range of them
+ * @plugindesc v1.01 Allows events to activate by being in range of them
  * instead of needing to be exactly next to or on top of them.
  * @author Yanfly Engine Plugins
  *
@@ -99,8 +99,11 @@ Yanfly.EvPrAc.version = 1.00;
  * Changelog
  * ============================================================================
  *
- * Version BETA:
- * - Started Plugin!
+ * Version 1.01:
+ * - Fixed a bug where parallel events don't loop.
+ *
+ * Version 1.00:
+ * - Finished Plugin!
  *
  * ============================================================================
  * End of Helpfile
@@ -227,20 +230,20 @@ Yanfly.EvPrAc.Game_Event_checkEventTriggerAuto =
 Game_Event.prototype.checkEventTriggerAuto = function() {
   if (this._trigger !== 3) return;
   if (this._initialAutoTriggerBypass) return;
-  if (!this.meetEventProximityConditions()) return;
+  if (!this.meetEventProximityConditions(false)) return;
   Yanfly.EvPrAc.Game_Event_checkEventTriggerAuto.call(this);
 };
 
 Yanfly.EvPrAc.Game_Event_updateParallel = Game_Event.prototype.updateParallel;
 Game_Event.prototype.updateParallel = function() {
   if (!this._interpreter) return;
-  if (!this.meetEventProximityConditions()) return;
+  if (!this.meetEventProximityConditions(true)) return;
   Yanfly.EvPrAc.Game_Event_updateParallel.call(this);
 };
 
-Game_Event.prototype.meetEventProximityConditions = function() {
-  if ($gameMap.isEventRunning()) return false;
-  if ($gameMap.isAnyEventStarting()) return false;
+Game_Event.prototype.meetEventProximityConditions = function(parallel) {
+  if (!parallel && $gameMap.isEventRunning()) return false;
+  if (!parallel && $gameMap.isAnyEventStarting()) return false;
   if (!this._activationType || this._activationType === 'none') return true;
   return $gamePlayer.meetPlayerProximityConditions(this);
 };

@@ -10,11 +10,11 @@ Imported.YEP_X_ExtDoT = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EDoT = Yanfly.EDoT || {};
-Yanfly.EDoT.version = 1.03;
+Yanfly.EDoT.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 (Req YEP_BattleEngineCore & YEP_BuffsStatesCore)
+ * @plugindesc v1.04 (Req YEP_BattleEngineCore & YEP_BuffsStatesCore)
  * Create custom DoT formulas and effects with ease.
  * @author Yanfly Engine Plugins + Tigress Collaboration
  *
@@ -185,6 +185,10 @@ Yanfly.EDoT.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.6.1.
@@ -375,6 +379,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

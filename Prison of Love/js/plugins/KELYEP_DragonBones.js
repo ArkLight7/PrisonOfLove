@@ -8,11 +8,11 @@ Imported.KELYEP_DragonBones = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.KelBattle = Yanfly.KelBattle || {};
-Yanfly.KelBattle.version = 1.05;
+Yanfly.KelBattle.version = 1.07;
 
 //=============================================================================
  /*:
- * @plugindesc v1.05 DragonBones Integration with YEP library compatibility!
+ * @plugindesc v1.07 DragonBones Integration with YEP library compatibility!
  * Use DragonBones assets with your battlers!
  * @author Yanfly Engine Plugins + TheGreenKel Collaboration
  *
@@ -447,6 +447,13 @@ Yanfly.KelBattle.version = 1.05;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.07:
+ * - Bugfixed for animation height rate for Dragonbones battlers.
+ *
+ * Version 1.06:
+ * - Bugfix for Action Sequences for Jump and Float not affecting units with
+ * DragonBones battlers.
  *
  * Version 1.05:
  * - Bugfix provided for crashes made by animations played on non-battler
@@ -1015,13 +1022,18 @@ Sprite_Animation.prototype.updateDragonBonesPosition = function() {
   var position = this._animation.position;
   if (position === 3) return;
   var battler = this._target._battler;
-  if (typeof battler != 'undefined') {
+  if (!this._target) return;
+  if (!this._target._battler && (this._target._battler !== undefined)) return;
+  if (battler !== undefined) {
     var data = battler.isActor() ? battler.actor() : battler.enemy();
     if (position === 0) {
       this.y -= data.meta.dragonbone_height;
     } else if (position === 1) {
       this.y -= data.meta.dragonbone_height / 2;
     }
+    var heightRate = battler.battler().getFloatHeight() + battler.battler().getJumpHeight();
+    var height = heightRate * data.meta.dragonbone_height;
+    this.y -= height;
   } else {
     var battler = this._target.parent._battler;
     if (battler && battler.hasDragonBone) {
@@ -1031,6 +1043,9 @@ Sprite_Animation.prototype.updateDragonBonesPosition = function() {
       } else if (position === 1) {
         this.y -= data.meta.dragonbone_height / 2;
       }
+      var heightRate = battler.battler().getFloatHeight() + battler.battler().getJumpHeight();
+      var height = heightRate * data.meta.dragonbone_height;
+      this.y -= height;
     }
   }
 };
@@ -1045,6 +1060,18 @@ dragonBonesIntegration.Sprite_Battler_update = Sprite_Battler.prototype.update;
 Sprite_Battler.prototype.update = function() {
   dragonBonesIntegration.Sprite_Battler_update.call(this);
   if (this._battler) this.updateStateIconSpritePosition()
+};
+
+dragonBonesIntegration.Sprite_Battler_updatePosition = Sprite_Battler.prototype.updatePosition;
+Sprite_Battler.prototype.updatePosition = function() {
+    dragonBonesIntegration.Sprite_Battler_updatePosition.call(this);
+    if (Imported.YEP_X_ActSeqPack2 && this._battler.hasDragonBone) {
+        var battler = this._battler.isActor() ? this._battler.actor() : this._battler.enemy();
+        var heightRate = this.getFloatHeight() + this.getJumpHeight();
+        var height = battler.meta.dragonbone_height * heightRate;
+        this.anchor.y += height;
+        this.y -= height;
+    }
 };
 
 Sprite_Battler.prototype.updateStateIconSpritePosition = function() {

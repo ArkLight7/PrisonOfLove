@@ -8,11 +8,11 @@ Imported.YEP_X_EnemyBaseParam = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EBP = Yanfly.EBP || {};
-Yanfly.EBP.version = 1.01;
+Yanfly.EBP.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 (Requires YEP_EnemyLevels.js) Use formulas to calculate
+ * @plugindesc v1.02 (Requires YEP_EnemyLevels.js) Use formulas to calculate
  * the base parameter values of enemies.
  * @author Yanfly Engine Plugins
  *
@@ -102,6 +102,10 @@ Yanfly.EBP.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.01:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -364,6 +368,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

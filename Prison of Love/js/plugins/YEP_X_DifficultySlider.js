@@ -8,11 +8,11 @@ Imported.YEP_X_DifficultySlider = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.DSlider = Yanfly.DSlider || {};
-Yanfly.DSlider.version = 1.03;
+Yanfly.DSlider.version = 1.04;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 (Requires YEP_EnemyLevels.js) Give your players
+ * @plugindesc v1.04 (Requires YEP_EnemyLevels.js) Give your players
  * access to an option that allows them to change difficulty.
  * @author Yanfly Engine Plugins
  *
@@ -243,6 +243,10 @@ Yanfly.DSlider.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Compatibility update for YEP_OptionsCore.js.
@@ -545,6 +549,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

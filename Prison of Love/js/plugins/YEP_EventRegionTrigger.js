@@ -8,11 +8,11 @@ Imported.YEP_EventRegionTrigger = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EvReTr = Yanfly.EvReTr || {};
-Yanfly.EvReTr.version = 1.01;
+Yanfly.EvReTr.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Allows events to trigger by being in specific regions
+ * @plugindesc v1.02 Allows events to trigger by being in specific regions
  * instead of needing to exactly next to or on top of them.
  * @author Yanfly Engine Plugins
  *
@@ -83,6 +83,9 @@ Yanfly.EvReTr.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Fixed a bug where parallels don't loop.
  *
  * Version 1.01:
  * - Fixed a bug where Autorun and Parallel triggers won't run unless they had
@@ -192,20 +195,20 @@ Yanfly.EvReTr.Game_Event_checkEventTriggerAuto =
 Game_Event.prototype.checkEventTriggerAuto = function() {
   if (this._trigger !== 3) return;
   if (this._initialAutoRegionTriggerBypass) return;
-  if (!this.meetEventRegionTriggerConditions()) return;
+  if (!this.meetEventRegionTriggerConditions(false)) return;
   Yanfly.EvReTr.Game_Event_checkEventTriggerAuto.call(this);
 };
 
 Yanfly.EvReTr.Game_Event_updateParallel = Game_Event.prototype.updateParallel;
 Game_Event.prototype.updateParallel = function() {
   if (!this._interpreter) return;
-  if (!this.meetEventRegionTriggerConditions()) return;
+  if (!this.meetEventRegionTriggerConditions(true)) return;
   Yanfly.EvReTr.Game_Event_updateParallel.call(this);
 };
 
-Game_Event.prototype.meetEventRegionTriggerConditions = function() {
-  if ($gameMap.isEventRunning()) return false;
-  if ($gameMap.isAnyEventStarting()) return false;
+Game_Event.prototype.meetEventRegionTriggerConditions = function(parallel) {
+  if (!parallel && $gameMap.isEventRunning()) return false;
+  if (!parallel && $gameMap.isAnyEventStarting()) return false;
   if (!this._regionTriggerList) return true;
   if (this._regionTriggerList.length <= 0) return true;
   return $gamePlayer.meetPlayerRegionTriggerConditions(this);

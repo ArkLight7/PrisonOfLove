@@ -8,11 +8,11 @@ Imported.YEP_StealSnatch = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Steal = Yanfly.Steal || {};
-Yanfly.Steal.version = 1.09;
+Yanfly.Steal.version = 1.10;
 
 //=============================================================================
  /*:
- * @plugindesc v1.09 Allows your actors to be able to steal and snatch
+ * @plugindesc v1.10 Allows your actors to be able to steal and snatch
  * items from enemies.
  * @author Yanfly Engine Plugins
  *
@@ -522,6 +522,10 @@ Yanfly.Steal.version = 1.09;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.10:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.09:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1615,6 +1619,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

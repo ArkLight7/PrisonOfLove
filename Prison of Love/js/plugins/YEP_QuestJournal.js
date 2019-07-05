@@ -8,11 +8,11 @@ Imported.YEP_QuestJournal = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.Quest = Yanfly.Quest || {};
-Yanfly.Quest.version = 1.01;
+Yanfly.Quest.version = 1.02;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Insert a quest journal system into your game!
+ * @plugindesc v1.02 Insert a quest journal system into your game!
  * @author Yanfly Engine Plugins
  *
  * @help
@@ -903,6 +903,10 @@ Yanfly.Quest.version = 1.01;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.02:
+ * - Fixed a bug that caused a game freeze when using the Quest Journal Open
+ * plugin command.
  *
  * Version 1.01:
  * - Fixed some bugs regarding certain plugin commands not working properly.
@@ -4929,11 +4933,16 @@ Scene_Quest.prototype.processQuestOpen = function() {
     this._categoryWindow.deactivate();
     this._listWindow.selectExt(questId);
     this.onListQuest();
-    this._listWindow.deactivate();
-    this._listWindow.setTopRow(this._listWindow.findExt(questId));
-    var scrollTimes = Math.floor(this._listWindow.getVisibleRows() / 2);
-    while (scrollTimes--) { 
-      this._listWindow.scrollUp();
+    if (this._listWindow._mode === 'Quest') {
+      this._listWindow.deactivate();
+      this._listWindow.setTopRow(this._listWindow.findExt(questId));
+      var scrollTimes = Math.floor(this._listWindow.getVisibleRows() / 2);
+      while (scrollTimes--) {
+        this._listWindow.scrollUp();
+      }
+    } else if (this._listWindow._mode === 'Extra') {
+      this.dataWindowActivate();
+      this._listWindow.deactivate();
     }
     this._listWindow.ensureCursorVisible();
     this._listWindow.updateCursor();

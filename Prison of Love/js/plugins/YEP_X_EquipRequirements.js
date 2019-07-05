@@ -8,11 +8,11 @@ Imported.YEP_X_EquipRequirements = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.EqReq = Yanfly.EqReq || {};
-Yanfly.EqReq.version = 1.08;
+Yanfly.EqReq.version = 1.09;
 
 //=============================================================================
  /*:
- * @plugindesc v1.08 (Requires YEP_EquipCore.js) Place requirements on
+ * @plugindesc v1.09 (Requires YEP_EquipCore.js) Place requirements on
  * pieces of equipment before actors can use them!
  * @author Yanfly Engine Plugins
  *
@@ -257,6 +257,10 @@ Yanfly.EqReq.version = 1.08;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.09:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.08:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -1028,6 +1032,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

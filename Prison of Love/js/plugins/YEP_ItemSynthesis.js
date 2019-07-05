@@ -8,11 +8,11 @@ Imported.YEP_ItemSynthesis = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.IS = Yanfly.IS || {};
-Yanfly.IS.version = 1.10;
+Yanfly.IS.version = 1.11;
 
 //=============================================================================
  /*:
- * @plugindesc v1.10 Players can now craft their own items in-game
+ * @plugindesc v1.11 Players can now craft their own items in-game
  * through an item synthesis system.
  * @author Yanfly Engine Plugins
  *
@@ -343,6 +343,10 @@ Yanfly.IS.version = 1.10;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.11:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.10:
  * - Added 'Amount Format' plugin parameter. Now you can switch the way the
@@ -1834,6 +1838,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

@@ -8,11 +8,11 @@ Imported.YEP_X_BattleSysSTB = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.STB = Yanfly.STB || {};
-Yanfly.STB.version = 1.03;
+Yanfly.STB.version = 1.05;
 
 //=============================================================================
  /*:
- * @plugindesc v1.03 (Requires YEP_BattleEngineCore.js) Add STB (Standard
+ * @plugindesc v1.05 (Requires YEP_BattleEngineCore.js) Add STB (Standard
  * Turn Battle) into your game using this plugin!
  * @author Yanfly Engine Plugins
  *
@@ -170,6 +170,13 @@ Yanfly.STB.version = 1.03;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.05:
+ * - Fixed Forced Action endless bug and added compatibility with Instant Cast.
+ *
+ * Version 1.04:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.03:
  * - Updated for RPG Maker MV version 1.5.0.
@@ -399,6 +406,7 @@ BattleManager.endSTBAction = function() {
   }
   if (this._processingForcedAction) {
     this._phase = this._preForcePhase;
+    this._processingForcedAction = false;
   }
   if (this.loadPreForceActionSettings()) return;
   this._subject = null;
@@ -691,6 +699,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();

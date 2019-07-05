@@ -8,11 +8,11 @@ Imported.YEP_X_SkillCostItems = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.SCI = Yanfly.SCI || {};
-Yanfly.SCI.version = 1.04;
+Yanfly.SCI.version = 1.05;
 
 //=============================================================================
  /*:
- * @plugindesc v1.04 (Requires YEP_SkillCore.js) Skills can now have an
+ * @plugindesc v1.05 (Requires YEP_SkillCore.js) Skills can now have an
  * item cost attached to them.
  * @author Yanfly Engine Plugins
  *
@@ -244,6 +244,10 @@ Yanfly.SCI.version = 1.04;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.05:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
  *
  * Version 1.04:
  * - Updated for RPG Maker MV version 1.5.0.

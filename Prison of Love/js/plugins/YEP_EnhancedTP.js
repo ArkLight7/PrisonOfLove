@@ -8,11 +8,11 @@ Imported.YEP_EnhancedTP = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.ETP = Yanfly.ETP || {};
-Yanfly.ETP.version = 1.08;
+Yanfly.ETP.version = 1.09;
 
 //=============================================================================
  /*:
- * @plugindesc v1.07 Gives you more control over how TP is handled in
+ * @plugindesc v1.09 Gives you more control over how TP is handled in
  * your game in addition to letting players switch TP modes.
  * @author Yanfly Engine Plugins
  *
@@ -3173,6 +3173,10 @@ Yanfly.ETP.version = 1.08;
  * Changelog
  * ============================================================================
  *
+ * Version 1.09:
+ * - Bypass the isDevToolsOpen() error when bad code is inserted into a script
+ * call or custom Lunatic Mode code segment due to updating to MV 1.6.1.
+ *
  * Version 1.08:
  * - Updated for RPG Maker MV version 1.6.1.
  *
@@ -4036,6 +4040,7 @@ Yanfly.Util.displayError = function(e, code, message) {
   console.log(message);
   console.log(code || 'NON-EXISTENT');
   console.error(e);
+  if (Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= "1.6.0") return;
   if (Utils.isNwjs() && Utils.isOptionValid('test')) {
     if (!require('nw.gui').Window.get().isDevToolsOpen()) {
       require('nw.gui').Window.get().showDevTools();
