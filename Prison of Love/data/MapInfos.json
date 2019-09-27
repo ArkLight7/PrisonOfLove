@@ -71,6 +71,6 @@ null,
 {"id":69,"expanded":false,"name":"FMN House Ruins","order":57,"parentId":34,"scrollX":1040,"scrollY":637.3333333333334},
 {"id":70,"expanded":true,"name":"FMN Inn","order":58,"parentId":34,"scrollX":1040,"scrollY":637.3333333333334},
 {"id":71,"expanded":false,"name":"FMN Shop","order":59,"parentId":34,"scrollX":1040,"scrollY":637.3333333333334},
-{"id":72,"expanded":false,"name":"FMN Ring","order":60,"parentId":34,"scrollX":1040,"scrollY":637.3333333333334},
+{"id":72,"expanded":false,"name":"FMN Ring","order":60,"parentId":34,"scrollX":1050.6666666666667,"scrollY":641.3333333333334},
 {"id":73,"expanded":true,"name":"South Harbor West Fields","order":39,"parentId":30,"scrollX":1158,"scrollY":705}
 ]
