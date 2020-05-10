@@ -81,6 +81,6 @@ null,
 {"id":79,"expanded":false,"name":"Quicksilver Ruins Mines","order":72,"parentId":77,"scrollX":778.5,"scrollY":478},
 {"id":80,"expanded":false,"name":"Mira Mind Palace","order":80,"parentId":48,"scrollX":770.5,"scrollY":478},
 {"id":81,"expanded":false,"name":"MMP Cell","order":81,"parentId":80,"scrollX":519,"scrollY":318.6666666666667},
-{"id":82,"expanded":true,"name":"Memory of Regret","order":82,"parentId":48,"scrollX":832,"scrollY":640},
-{"id":83,"expanded":false,"name":"Battlefield of Despair","order":83,"parentId":82,"scrollX":816,"scrollY":800}
+{"id":82,"expanded":true,"name":"Memory of Regret","order":82,"parentId":48,"scrollX":778.5,"scrollY":478},
+{"id":83,"expanded":false,"name":"Battlefield of Despair","order":83,"parentId":82,"scrollX":770.5,"scrollY":558}
 ]
