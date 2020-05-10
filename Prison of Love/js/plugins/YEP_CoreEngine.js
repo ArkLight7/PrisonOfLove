@@ -595,8 +595,8 @@ Yanfly.Core.version = 1.31;
  *   the exact settings (usually due to animaitons), the volume stacks upon
  *   each other, causing them to not play the intended volume for the effect.
  *   This plugin fixes this issue by preventing sound effects of the same exact
-     settings from playing during the same frame, allowing only the first to
-     go through without stacking the volume higher.
+ *   settings from playing during the same frame, allowing only the first to
+ *   go through without stacking the volume higher.
  *
  * Event Movement Speed
  *   The movement speed of events are slightly slower than what they should be
