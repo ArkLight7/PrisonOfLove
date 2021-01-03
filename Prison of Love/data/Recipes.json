@@ -178,12 +178,12 @@ null,
 		[{
 			"Type": "item",
 			"ID": 94,
-			"Amount": 3
+			"Amount": 1
 		},
 		{
 			"Type": "item",
 			"ID": 95,
-			"Amount": 1
+			"Amount": 3
 		}],
 	"Discipline": 3,
 	"Category": ["Brewing"],
