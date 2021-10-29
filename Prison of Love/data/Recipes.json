@@ -2,19 +2,24 @@
 null,
 {
 	"ID": 1,
-	"Name": "Copper Ingot",
+	"Name": "Bronze Ingot",
 	"IconIndex": 313,
 	"Result": 
 		[{
 			"Type": "item",
-			"ID": 67,
+			"ID": 820,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 52,
+			"ID": 802,
 			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 803,
+			"Amount": 1
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],
@@ -24,18 +29,66 @@ null,
 },
 {
 	"ID": 2,
-	"Name": "Tin Ingot",
+	"Name": "Iron Ingot",
 	"IconIndex": 313,
 	"Result": 
 		[{
 			"Type": "item",
-			"ID": 87,
+			"ID": 821,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 86,
+			"ID": 804,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
+	"LevelReq": 5,
+	"Learned": "start"
+},
+{
+	"ID": 3,
+	"Name": "Steel Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 822,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 804,
+			"Amount": 2
+		},
+		{
+			"Type": "item",
+			"ID": 806,
+			"Amount": 1
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},{
+	"ID": 4,
+	"Name": "Mithril Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 823,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 808,
 			"Amount": 2
 		}],
 	"Discipline": 1,
@@ -45,281 +98,344 @@ null,
 	"Learned": "start"
 },
 {
-	"ID": 3,
-	"Name": "Bronze Ingot",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 2
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 52,
-			"Amount": 3
-		},
-		{
-			"Type": "item",
-			"ID": 86,
-			"Amount": 1
-		}],
-	"Discipline": 1,
-	"Category": ["Ingots"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "start"
-},
-{
-	"ID": 4,
-	"Name": "Iron Ingot",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 66,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 51,
-			"Amount": 2
-		}],
-	"Discipline": 1,
-	"Category": ["Ingots"],
-	"XP": 10,
-	"LevelReq": 7,
-	"Learned": "start"
-},
-{
-	"ID": 5,
-	"Name": "Steel Ingot",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 58,
-			"Amount": 4
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 51,
-			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 89,
-			"Amount": 1
-		}],
-	"Discipline": 1,
-	"Category": ["Ingots"],
-	"XP": 1,
-	"LevelReq": 10,
-	"Learned": "levelhit"
-},
-{
-	"ID": 6,
-	"Name": "Leather",
-	"IconIndex": 291,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 91,
-			"Amount": 1
-		}],
-	"Discipline": 5,
-	"Category": ["Tanning"],
-	"XP": 5,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 7,
-	"Name": "Leather",
-	"IconIndex": 210,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 2
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 92,
-			"Amount": 1
-		}],
-	"Discipline": 5,
-	"Category": ["Tanning"],
-	"XP": 5,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 8,
-	"Name": "Potion",
-	"IconIndex": 176,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 1,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 95,
-			"Amount": 3
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 9,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 9,
-	"Name": "Cleaning Rag",
-	"IconIndex": 296,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 13,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 85,
-			"Amount": 1
-		}],
-	"Discipline": 6,
-	"Category": ["Items"],
-	"XP": 17,
-	"LevelReq": 1,
-	"Learned": "command"
-},
-{
-	"ID": 10,
-	"Name": "Oak Lumber",
-	"IconIndex": 210,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 96,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 75,
-			"Amount": 3
-		}],
-	"Discipline": 6,
-	"Category": ["Items"],
-	"XP": 29,
-	"LevelReq": 1,
-	"Learned": "command"
-},
-{
 	"ID": 11,
-	"Name": "Bronze Sword",
-	"IconIndex": 97,
+	"Name": "Copper Ingot",
+	"IconIndex": 313,
 	"Result": 
 		[{
-			"Type": "weapon",
-			"ID": 1,
+			"Type": "item",
+			"ID": 830,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 88,
+			"ID": 802,
 			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
 		}],
-	"Discipline": 2,
-	"Category": ["Weapons"],
-	"XP": 22,
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
 	"LevelReq": 1,
 	"Learned": "start"
 },
 {
 	"ID": 12,
-	"Name": "Bronze Knuckles",
-	"IconIndex": 106,
+	"Name": "Brass Ingot",
+	"IconIndex": 313,
 	"Result": 
 		[{
-			"Type": "weapon",
-			"ID": 11,
+			"Type": "item",
+			"ID": 831,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 88,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Discipline": 2,
-	"Category": ["Weapons"],
-	"XP": 22,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 13,
-	"Name": "Iron Sword",
-	"IconIndex": 97,
-	"Result": 
-		[{
-			"Type": "weapon",
-			"ID": 7,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 66,
+			"ID": 802,
 			"Amount": 2
 		},
 		{
 			"Type": "item",
-			"ID": 90,
+			"ID": 805,
 			"Amount": 1
 		}],
-	"Discipline": 2,
-	"Category": ["Weapons"],
-	"XP": 41,
-	"LevelReq": 4,
-	"Learned": "levelhit"
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
 },
 {
-	"ID": 14,
-	"Name": "Oak Bow",
-	"IconIndex": 102,
+	"ID": 21,
+	"Name": "Woven Hemp",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 841,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 840,
+			"Amount": 3
+		}],
+	"Discipline": 5,
+	"Category": ["Items"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 22,
+	"Name": "Cotton Cloth",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 843,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 842,
+			"Amount": 3
+		}],
+	"Discipline": 5,
+	"Category": ["Items"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 31,
+	"Name": "Birch Lumber",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 860,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 859,
+			"Amount": 3
+		}],
+	"Discipline": 6,
+	"Category": ["Items"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 41,
+	"Name": "Light Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 881,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 879,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 42,
+	"Name": "Light Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 881,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 880,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 43,
+	"Name": "Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 886,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 882,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 44,
+	"Name": "Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 886,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 883,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 45,
+	"Name": "Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 886,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 884,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 46,
+	"Name": "Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 886,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 885,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 47,
+	"Name": "Hard Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 887,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 882,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 48,
+	"Name": "Hard Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 887,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 883,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 49,
+	"Name": "Hard Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 887,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 884,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 50,
+	"Name": "Hard Leather",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 887,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 885,
+			"Amount": 3
+		}],
+	"Discipline": 4,
+	"Category": ["Tanning"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 60,
+	"Name": "Bronze Sword",
+	"IconIndex": 313,
 	"Result": 
 		[{
 			"Type": "weapon",
@@ -329,1589 +445,57 @@ null,
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 96,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
+			"ID": 820,
+			"Amount": 3
 		}],
-	"Discipline": 7,
+	"Discipline": 1,
 	"Category": ["Weapons"],
-	"XP": 5,
+	"XP": 2,
 	"LevelReq": 1,
-	"Learned": "command"
+	"Learned": "start"
 },
 {
-	"ID": 15,
-	"Name": "Steel Sword",
-	"IconIndex": 97,
+	"ID": 61,
+	"Name": "Bronze Greatsword",
+	"IconIndex": 313,
 	"Result": 
 		[{
 			"Type": "weapon",
-			"ID": 14,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 58,
-			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Discipline": 2,
-	"Category": ["Weapons"],
-	"XP": 190,
-	"LevelReq": 10,
-	"Learned": "levelhit"
-},
-{
-	"ID": 16,
-	"Name": "Oak Fishing Pole",
-	"IconIndex": 213,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 104,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 96,
-			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Discipline": 7,
-	"Category": ["Items"],
-	"XP": 20,
-	"LevelReq": 5,
-	"Learned": "levelhit"
-},
-{
-	"ID": 17,
-	"Name": "Bronze Chainmail",
-	"IconIndex": 137,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 5,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 5
-		}],
-	"Discipline": 2,
-	"Category": ["Armors"],
-	"XP": 20,
-	"LevelReq": 5,
-	"Learned": "levelhit"
-},
-{
-	"ID": 18,
-	"Name": "Bronze Dagger",
-	"IconIndex": 96,
-	"Result": 
-		[{
-			"Type": "weapon",
-			"ID": 21,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Discipline": 2,
-	"Category": ["Weapons"],
-	"XP": 1,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 19,
-	"Name": "Baked Potato",
-	"IconIndex": 258,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 31,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 108,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 20,
-	"Name": "Loaded Baked Potato",
-	"IconIndex": 258,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 32,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 31,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 231,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 230,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 35,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 21,
-	"Name": "Bacon",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 35,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 109,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 22,
-	"Name": "Raw Bacon",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 109,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 110,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 1,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 23,
-	"Name": "Succulent Steak",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
 			"ID": 33,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 93,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 230,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 10,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 24,
-	"Name": "Flour",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 232,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 221,
-			"Amount": 2
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 1,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 25,
-	"Name": "Bread",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 259,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 234,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 3,
-	"Learned": "levelhit"
-},
-{
-	"ID": 26,
-	"Name": "Soothing Ointment",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 38,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 235,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 27,
-	"Name": "Soothing Ointment",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 38,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 246,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 28,
-	"Name": "Soothing Ointment",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 38,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 209,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 29,
-	"Name": "Cough Drop",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 38,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 210,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 30,
-	"Name": "Marshmallow",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 111,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 247,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 31,
-	"Name": "Chocolate",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 112,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 248,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 233,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 32,
-	"Name": "Honey Cracker",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 114,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 233,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 232,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 33,
-	"Name": "Cooked Porkchop",
-	"IconIndex": 259,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 36,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 110,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 201,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 34,
-	"Name": "Electrum Ingot",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 61,
-			"Amount": 2
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 53,
-			"Amount": 3
-		},
-		{
-			"Type": "item",
-			"ID": 57,
-			"Amount": 2
+			"ID": 820,
+			"Amount": 5
 		}],
 	"Discipline": 1,
-	"Category": ["Ingots"],
-	"XP": 1,
-	"LevelReq": 20,
-	"Learned": "levelhit"
-},
-{
-	"ID": 35,
-	"Name": "Bandage",
-	"IconIndex": 296,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 40,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 85,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 250,
-			"Amount": 2
-		}],
-	"Discipline": 3,
-	"Category": ["Mixing"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 36,
-	"Name": "Weak Tonic",
-	"IconIndex": 176,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 2,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 270,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 223,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 1,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 37,
-	"Name": "Tonic",
-	"IconIndex": 176,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 41,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 84,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 226,
-			"Amount": 2
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 30,
-	"LevelReq": 10,
-	"Learned": "levelhit"
-},
-{
-	"ID": 38,
-	"Name": "Tums",
-	"IconIndex": 176,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 42,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 240,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 236,
-			"Amount": 1
-		}],
-	"Discipline": 3,
-	"Category": ["Brewing"],
-	"XP": 30,
-	"LevelReq": 10,
-	"Learned": "levelhit"
-},
-{
-	"ID": 39,
-	"Name": "Pickles",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 117,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 253,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 252,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 4,
-	"Learned": "levelhit"
-},
-{
-	"ID": 40,
-	"Name": "Burger",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 119,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 93,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 254,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1,
-	"LevelReq": 5,
-	"Learned": "levelhit"
-},
-{
-	"ID": 41,
-	"Name": "Super Burger",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 120,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 120,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 258,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 40,
-	"LevelReq": 10,
-	"Learned": "levelhit"
-},
-{
-	"ID": 42,
-	"Name": "Dough",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 259,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 232,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 43,
-	"Name": "Supreme Burger",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 121,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 120,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 117,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 231,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 35,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 40,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 44,
-	"Name": "Burger X",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 122,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 121,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 108,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 1000,
-	"LevelReq": 50,
-	"Learned": "levelhit"
-},
-{
-	"ID": 45,
-	"Name": "Grilled Cheese",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 131,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 260,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 46,
-	"Name": "Chicken Pot Pie",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 128,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 115,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 259,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 132,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 47,
-	"Name": "Bronze Ingot",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 51,
-			"Amount": 2
-		}],
-	"Discipline": 1,
-	"Category": ["Ingots"],
-	"XP": 7,
-	"LevelReq": 4,
-	"Learned": "start"
-},
-{
-	"ID": 48,
-	"Name": "Bronze Battleaxe",
-	"IconIndex": 99,
-	"Result": 
-		[{
-			"Type": "weapon",
-			"ID": 2,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 90,
-			"Amount": 1
-		}],
-	"Discipline": 2,
 	"Category": ["Weapons"],
-	"XP": 22,
+	"XP": 2,
 	"LevelReq": 1,
 	"Learned": "start"
-},
-{
-	"ID": 49,
-	"Name": "Cloth Wraps",
-	"IconIndex": 106,
-	"Result": 
-		[{
-			"Type": "weapon",
-			"ID": 8,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 85,
-			"Amount": 2
-		}],
-	"Discipline": 6,
-	"Category": ["Weapons"],
-	"XP": 22,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 50,
-	"Name": "Roast Chicken",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 128,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 115,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 108,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 51,
-	"Name": "Veggie Medley",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 132,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 107,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 108,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 231,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 52,
-	"Name": "Coffee",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 127,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 257,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Drinks"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 53,
-	"Name": "Cheesy Garlic Bread",
-	"IconIndex": 266,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 129,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 230,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 260,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 54,
-	"Name": "Grilled Cheese",
-	"IconIndex": 266,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 129,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 37,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 34,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 260,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 55,
-	"Name": "Honey Tea",
-	"IconIndex": 226,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 125,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 255,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 208,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Drinks"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 56,
-	"Name": "Blackberry Tea",
-	"IconIndex": 226,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 126,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 255,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 251,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Drinks"],
-	"XP": 5,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 57,
-	"Name": "Chai Tea",
-	"IconIndex": 226,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 124,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 255,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 229,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 256,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Drinks"],
-	"XP": 5,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 58,
-	"Name": "Bronze Shield",
-	"IconIndex": 128,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 1,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 88,
-			"Amount": 3
-		}],
-	"Discipline": 2,
-	"Category": ["Armors"],
-	"XP": 20,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 59,
-	"Name": "Copper Ring",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 4,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 67,
-			"Amount": 1
-		}],
-	"Discipline": 8,
-	"Category": ["Accessories"],
-	"XP": 5,
-	"LevelReq": 1,
-	"Learned": "start"
-},
-{
-	"ID": 60,
-	"Name": "Gold Ring",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 6,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 68,
-			"Amount": 1
-		}],
-	"Discipline": 8,
-	"Category": ["Accessories"],
-	"XP": 50,
-	"LevelReq": 20,
-	"Learned": "levelhit"
-},
-{
-	"ID": 61,
-	"Name": "Silver Ring",
-	"IconIndex": 313,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 29,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 72,
-			"Amount": 1
-		}],
-	"Discipline": 8,
-	"Category": ["Accessories"],
-	"XP": 50,
-	"LevelReq": 10,
-	"Learned": "levelhit"
 },
 {
 	"ID": 62,
-	"Name": "Raw Sausage",
-	"IconIndex": 272,
+	"Name": "Bronze Dagger",
+	"IconIndex": 313,
 	"Result": 
 		[{
-			"Type": "item",
-			"ID": 133,
+			"Type": "weapon",
+			"ID": 123,
 			"Amount": 1
 		}],
 	"Requires":
 		[{
 			"Type": "item",
-			"ID": 110,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 63,
-	"Name": "Stock",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 134,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 94,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 93,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 231,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 107,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 64,
-	"Name": "Gravy",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 135,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 134,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 232,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 65,
-	"Name": "Peanut Butter",
-	"IconIndex": 228,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 265,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 136,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 264,
-			"Amount": 10
-		},
-		{
-			"Type": "item",
-			"ID": 227,
-			"Amount": 1
-		}],
-	"Discipline": 4,
-	"Category": ["Prepare"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 66,
-	"Name": "Omelette",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "item",
-			"ID": 137,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 266,
+			"ID": 820,
 			"Amount": 2
-		},
-		{
-			"Type": "item",
-			"ID": 263,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 231,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 136,
-			"Amount": 1
 		}],
-	"Discipline": 4,
-	"Category": ["Dishes"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
-},
-{
-	"ID": 67,
-	"Name": "Iron Arrow",
-	"IconIndex": 274,
-	"Result": 
-		[{
-			"Type": "armor",
-			"ID": 12,
-			"Amount": 1
-		}],
-	"Requires":
-		[{
-			"Type": "item",
-			"ID": 66,
-			"Amount": 1
-		},
-		{
-			"Type": "item",
-			"ID": 96,
-			"Amount": 1
-		}],
-	"Discipline": 7,
+	"Discipline": 1,
 	"Category": ["Weapons"],
-	"XP": 5,
-	"LevelReq": 2,
-	"Learned": "levelhit"
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
 }
 ]

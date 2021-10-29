@@ -2,24 +2,15 @@
 null,
 {
 	"ID": 1,
-	"Name": "Smelting",
-	"IconID": 313,
-	"ExpFormula": "10*level",
-	"MaxLevel": 10,
-	"Categories": ["Ingots"],
-	"Background": "LavaCave"
-},
-{
-	"ID": 2,
 	"Name": "Smithing",
 	"IconID": 216,
 	"ExpFormula": "99 + 99 * (level*level)",
 	"MaxLevel": 150,
-	"Categories": ["Weapons", "Armors"],
+	"Categories": ["Ingots", "Weapons", "Armors"],
 	"Background": "Blackness"
 },
 {
-	"ID": 3,
+	"ID": 2,
 	"Name": "Alchemy",
 	"IconID": 219,
 	"ExpFormula": "50 + 25 * level",
@@ -28,7 +19,7 @@ null,
 	"Background": "Blackness"
 },
 {
-	"ID": 4,
+	"ID": 3,
 	"Name": "Cooking",
 	"IconID": 274,
 	"ExpFormula": "50 + 25 * level",
@@ -37,7 +28,7 @@ null,
 	"Background": "Blackness"
 },
 {
-	"ID": 5,
+	"ID": 4,
 	"Name": "Leatherworking",
 	"IconID": 291,
 	"ExpFormula": "50 + 25 * level",
@@ -46,7 +37,7 @@ null,
 	"Background": "Blackness"
 },
 {
-	"ID": 6,
+	"ID": 5,
 	"Name": "Tailoring",
 	"IconID": 291,
 	"ExpFormula": "50 + 25 * level",
@@ -55,7 +46,7 @@ null,
 	"Background": "Blackness"
 },
 {
-	"ID": 7,
+	"ID": 6,
 	"Name": "Woodworking",
 	"IconID": 295,
 	"ExpFormula": "50 + 25 * level",
@@ -64,7 +55,7 @@ null,
 	"Background": "Blackness"
 },
 {
-	"ID": 8,
+	"ID": 7,
 	"Name": "Accessory Crafting",
 	"IconID": 295,
 	"ExpFormula": "50 + 25 * level",
