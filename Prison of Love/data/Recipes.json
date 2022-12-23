@@ -34,7 +34,7 @@ null,
 	"Result": 
 		[{
 			"Type": "item",
-			"ID": 821,
+			"ID": 820,
 			"Amount": 1
 		}],
 	"Requires":
@@ -139,6 +139,50 @@ null,
 			"Type": "item",
 			"ID": 805,
 			"Amount": 1
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 13,
+	"Name": "Silver Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 832,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 807,
+			"Amount": 2
+		}],
+	"Discipline": 1,
+	"Category": ["Ingots"],
+	"XP": 2,
+	"LevelReq": 1,
+	"Learned": "start"
+},
+{
+	"ID": 14,
+	"Name": "Gold Ingot",
+	"IconIndex": 313,
+	"Result": 
+		[{
+			"Type": "item",
+			"ID": 833,
+			"Amount": 1
+		}],
+	"Requires":
+		[{
+			"Type": "item",
+			"ID": 809,
+			"Amount": 2
 		}],
 	"Discipline": 1,
 	"Category": ["Ingots"],

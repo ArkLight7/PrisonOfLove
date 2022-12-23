@@ -33,7 +33,7 @@ null,
 	"IconID": 291,
 	"ExpFormula": "50 + 25 * level",
 	"MaxLevel": 150,
-	"Categories": ["Tanning"],
+	"Categories": ["Tanning", "Armor"],
 	"Background": "Blackness"
 },
 {
@@ -56,7 +56,7 @@ null,
 },
 {
 	"ID": 7,
-	"Name": "Accessory Crafting",
+	"Name": "Goldsmithing",
 	"IconID": 295,
 	"ExpFormula": "50 + 25 * level",
 	"MaxLevel": 150,
